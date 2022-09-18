@@ -13,12 +13,21 @@
 
 \begin{document}
 \maketitle
-\[
-  \mbold{a} \cdot (\mbold{b} \times \mbold{c}) = \mbold{b} \cdot (\mbold{c} \times \mbold{a}) = \mbold{c} \cdot (\mbold{a} \times \mbold{b})
-\]
-これらの式は, $\mbold{a}$, $\mbold{b}$, $\mbold{c}$で張られる平行六面体の体積
-最初の式について成分表示すると, 
-\[
+\begin{abstract}
+  3次元ベクトル$\mbold{a}$, $\mbold{b}$, $\mbold{c}$について, 
+  \begin{equation}\label{eq-1}
+    \mbold{a} \cdot (\mbold{b} \times \mbold{c}) 
+    = \mbold{b} \cdot (\mbold{c} \times \mbold{a}) 
+    = \mbold{c} \cdot (\mbold{a} \times \mbold{b})
+  \end{equation}
+  であり, 
+  これらの式は, $\mbold{a}$, $\mbold{b}$, $\mbold{c}$で張られる平行六面体の体積
+  であることの証明. 
+\end{abstract}
+
+
+式(\ref{eq-1})について成分表示すると, 
+\begin{equation}\label{eq-2}
   \mbold{a} \cdot (\mbold{b} \times \mbold{c}) = 
   \begin{pmatrix}
         a_1 \\
@@ -32,11 +41,11 @@
     b_1 c_2 - b_2 c_1
   \end{pmatrix}
   = a_1 b_2 c_3 - a_1 b_3 c_2 + a_2 b_3 c_1 - a_2 b_1 c_3 + a_3 b_1 c_2 - a_3 b_2 c_1
-\]
-この式について, 第二式, 第三式を実現するような, $a, b, c$の単純な文字の置き換えで, 式が変化しないかどうかを確認する. 
-例えば, 第二式の場合は, $a \rightarrow b$, $b \rightarrow c$, $c \rightarrow a$という置き換えであるが, 第一項について, その置き換えをすると, $b_1 c_2 a_3 = a_3 b_1 c_2$となり, 第5項と一致する. これを, 他の項についても以下のような表を用いて確認していく. 
+\end{equation}
+式(\ref{eq-2})について, 式(\ref{eq-1})の中辺, 右辺を実現するような, $a, b, c$の単純な文字の置き換えで, 式が変化しないかどうかを確認する. 
+例えば, 式(\ref{eq-1})中辺の場合は, $a \rightarrow b$, $b \rightarrow c$, $c \rightarrow a$という置き換えであるが, 式(\ref{eq-2})第一項について, その置き換えをすると, $b_1 c_2 a_3 = a_3 b_1 c_2$となり, 置き換え前の式(\ref{eq-2})第5項と一致する. これを, 他の項についても以下のような表を用いて確認していく. 
 \begin{table}[hbtp]
-  \caption{第一式の添字}
+  \caption{式(\ref{eq-1})左辺の添字}
   \centering
   \begin{tabular}{|c|c|c|c|}
     \hline
@@ -58,7 +67,7 @@
 \end{table}
 
 \begin{table}[hbtp]
-  \caption{第二式に対応した入れ替えによる添字}
+  \caption{式(\ref{eq-1})中辺に対応した入れ替えによる添字}
   \centering
   \begin{tabular}{|c|c|c|c|}
     \hline
@@ -80,7 +89,7 @@
 \end{table}
 
 \begin{table}[hbtp]
-  \caption{第三式に対応した入れ替えによる添字}
+  \caption{式(\ref{eq-1})右辺に対応した入れ替えによる添字}
   \centering
   \begin{tabular}{|c|c|c|c|}
     \hline
