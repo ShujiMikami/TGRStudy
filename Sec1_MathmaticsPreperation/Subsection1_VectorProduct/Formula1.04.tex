@@ -1,0 +1,118 @@
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\title{Formula1.04}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+  3次元ベクトル$\mbold{a}$, $\mbold{b}$, $\mbold{c}$, $\mbold{d}$について, 
+  \begin{equation}\label{eq-1}
+    (\mbold{a} \cdot \mbold{c})(\mbold{b} \cdot \mbold{d}) 
+    -(\mbold{a} \cdot \mbold{d})(\mbold{b} \cdot \mbold{c}) 
+    = (\mbold{a} \times \mbold{b}) \cdot (\mbold{c} \times \mbold{d}) 
+  \end{equation}
+  の証明. 
+\end{abstract}
+
+\section{lemma1}\label{lemma-1}
+\begin{equation}\label{eq-2}
+  \mbold{a} \times (\mbold{b} \times \mbold{c})
+  = (\mbold{a} \cdot \mbold{c})\mbold{b} - (\mbold{a} \cdot \mbold{b})\mbold{c}
+\end{equation}
+
+ただ計算するだけだが, 以下の考察により, 少し計算が捗る. 
+
+$\mbold{b} \times \mbold{c}$は, Theorem1.02によれば, $\mbold{b}$, $\mbold{c}$に対し, 垂直であるため, $\mbold{b}$, $\mbold{c}$が含まれる平面に対する法線ベクトルである. 
+その法線ベクトルと, 別のベクトル$\mbold{a}$の外積は, 同様に, $\mbold{a}$, $\mbold{b}$に対し, ともに垂直であるため, 結局, $\mbold{b}$, $\mbold{c}$が含まれる平面に含まれるベクトルとなる. 
+したがって, $\mbold{a} \times (\mbold{b} \times \mbold{c})$は, $\mbold{b}$と$\mbold{c}$の線形結合で表され, 
+実数$\beta$, $\gamma$を用いて, 
+\[
+  \mbold{a} \times (\mbold{b} \times \mbold{c}) = \beta \mbold{b} + \gamma \mbold{c}
+\]
+と書けるはずである. 計算の過程で, この形を目指しながらすすめる. 
+
+式(\ref{eq-2})の左辺は, 成分表示すると, 
+\begin{equation}\label{eq-3}
+  \mbold{a} \times (\mbold{b} \times \mbold{c})
+  = \begin{pmatrix}
+      a_1 \\
+      a_2 \\
+      a_3
+    \end{pmatrix}
+    \times
+    \begin{pmatrix}
+      b_2 c_3 - b_3 c_2 \\
+      b_3 c_1 - b_1 c_3 \\
+      b_1 c_2 - b_2 c_1
+    \end{pmatrix}
+  = \begin{pmatrix}
+      a_2 \textcolor{green}{b_1} c_2 - a_2 b_2 \textcolor{blue}{c_1} - a_3 b_3 \textcolor{blue}{c_1} + a_3 \textcolor{green}{b_1} c_3 \\
+      a_3 \textcolor{green}{b_2} c_3 - a_3 b_3 \textcolor{blue}{c_2} - a_1 b_1 \textcolor{blue}{c_2} + a_1 \textcolor{green}{b_2} c_1 \\
+      a_1 \textcolor{green}{b_3} c_1 - a_1 b_1 \textcolor{blue}{c_3} - a_2 b_2 \textcolor{blue}{c_3} + a_2 \textcolor{green}{b_3} c_2
+    \end{pmatrix}
+\end{equation}
+
+式(\ref{eq-3})の最右辺の色がついた部分を, $b_i$, $c_i$についてまとめると, 
+\begin{equation}\label{eq-4}
+  \begin{pmatrix}
+      a_2 \textcolor{green}{b_1} c_2 - a_2 b_2 \textcolor{blue}{c_1} - a_3 b_3 \textcolor{blue}{c_1} + a_3 \textcolor{green}{b_1} c_3 \\
+      a_3 \textcolor{green}{b_2} c_3 - a_3 b_3 \textcolor{blue}{c_2} - a_1 b_1 \textcolor{blue}{c_2} + a_1 \textcolor{green}{b_2} c_1 \\
+      a_1 \textcolor{green}{b_3} c_1 - a_1 b_1 \textcolor{blue}{c_3} - a_2 b_2 \textcolor{blue}{c_3} + a_2 \textcolor{green}{b_3} c_2
+  \end{pmatrix}
+  = \begin{pmatrix}
+      (a_2 c_2 + a_3 c_3)b1 - (a_2 b_2 + a_3 b_3)c1 \\
+      (a_1 c_1 + a_3 c_3)b2 - (a_1 b_1 + a_3 b_3)c2 \\
+      (a_1 c_1 + a_2 c_2)b3 - (a_1 b_1 + a_2 b_2)c3 
+    \end{pmatrix}
+\end{equation}
+
+式(\ref{eq-4})の右辺の各項は, 事前に示した形にするには, $x$成分, $y$成分, $z$成分で, 絶妙に項が足りないが, 例えば, $x$成分については, $b_1$に関する項で足りないのは, $a_1 b_1 c_1$であるのに対し, 後半で足りないのも, $a_1 b_1 c_1$であり, 符号が反転していることから, 無理やり足しても互いに打ち消し合う. 
+同様に, $y$成分では, $a_2 b_2 c_2$が, $z$成分では, $a_3 b_3 c_3$が, 前半後半ともに足りず, これらを無理やり足した結果で記述すると, 
+\begin{equation}\label{eq-5}
+  \begin{pmatrix}
+      (a_2 c_2 + a_3 c_3)b1 - (a_2 b_2 + a_3 b_3)c1 \\
+      (a_1 c_1 + a_3 c_3)b2 - (a_1 b_1 + a_3 b_3)c2 \\
+      (a_1 c_1 + a_2 c_2)b3 - (a_1 b_1 + a_2 b_2)c3 
+  \end{pmatrix}
+  = \begin{pmatrix}
+      (a_1 c_1 + a_2 c_2 + a_3 c_3)b1 - (a_1 b_1 + a_2 b_2 + a_3 b_3)c1 \\
+      (a_1 c_1 + a_2 c_2 + a_3 c_3)b2 - (a_1 b_1 + a_2 b_2 + a_3 b_3)c2 \\
+      (a_1 c_1 + a_2 c_2 + a_3 c_3)b3 - (a_1 b_1 + a_2 b_2 + a_3 b_3)c3 
+    \end{pmatrix}
+  = (\mbold{a} \cdot \mbold{c})\mbold{b} - (\mbold{a} \cdot \mbold{b})\mbold{c}
+\end{equation}
+
+なお, $\mbold{b}$, $\mbold{c}$が互いに線形独立でない場合, 一部の議論(線形結合の部分)が怪しくなるが, 
+そもそもその考察自体が, 恒等式としての証明を行う過程の式変形を補助しているにすぎないため, 問題にならないし, 
+例えば$\mbold{b}$と$\mbold{c}$が平行な場合, 
+式(\ref{eq-2})の左辺は明らかに$\mbold{0}$であり, 右辺は, $\mbold{c} = \alpha \mbold{b}$と置くことで, $\mbold{0}$になることが容易にわかる. 
+
+\section{本証明}
+式(\ref{eq-1})の左辺を, $\mbold{a}$についてまとめると, 
+\begin{equation}\label{eq-6}
+  (\mbold{a} \cdot \mbold{c})(\mbold{b} \cdot \mbold{d}) - (\mbold{a} \cdot \mbold{d})(\mbold{b} \cdot \mbold{c})
+  = \mbold{a} \cdot ((\mbold{b} \cdot \mbold{d})\mbold{c} - (\mbold{b} \cdot \mbold{c})\mbold{d})
+\end{equation}
+
+式(\ref{eq-1})の右辺を, Formula1.03に従って, Cyclicに入れ替えると, 
+\begin{equation}\label{eq-7}
+  (\mbold{a} \times \mbold{b}) \cdot (\mbold{c} \times \mbold{d})
+  = (\mbold{c} \times \mbold{d}) \cdot (\mbold{a} \times \mbold{b})
+  = \mbold{a} \cdot (\mbold{b} \times (\mbold{c} \times \mbold{d}))
+\end{equation}
+
+lemma1によると, 式(\ref{eq-6}), 式(\ref{eq-7})両者右辺の, $\mbold{a}$と内積を取られる対象のベクトルは, 
+恒等的に等しいため, 任意の$\mbold{a}$に対し, 内積も当然等しくなる. 
+したがって, 式(\ref{eq-1})が成立する. 
+
+
+\end{document}
