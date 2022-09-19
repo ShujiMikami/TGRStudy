@@ -18,7 +18,7 @@
   \begin{equation}\label{eq-1}
     (\mbold{a} \cdot \mbold{c})(\mbold{b} \cdot \mbold{d}) 
     -(\mbold{a} \cdot \mbold{d})(\mbold{b} \cdot \mbold{c}) 
-    = (\mbold{a} \times \mbold{b}) \cdot (\mbold{b} \times \mbold{c}) 
+    = (\mbold{a} \times \mbold{b}) \cdot (\mbold{c} \times \mbold{d}) 
   \end{equation}
   の証明. 
 \end{abstract}
@@ -95,6 +95,24 @@ $\mbold{b} \times \mbold{c}$は, Theorem1.02によれば, $\mbold{b}$, $\mbold{c
 そもそもその考察自体が, 恒等式としての証明を行う過程の式変形を補助しているにすぎないため, 問題にならないし, 
 例えば$\mbold{b}$と$\mbold{c}$が平行な場合, 
 式(\ref{eq-2})の左辺は明らかに$\mbold{0}$であり, 右辺は, $\mbold{c} = \alpha \mbold{b}$と置くことで, $\mbold{0}$になることが容易にわかる. 
+
+\section{本証明}
+式(\ref{eq-1})の左辺を, $\mbold{a}$についてまとめると, 
+\begin{equation}\label{eq-6}
+  (\mbold{a} \cdot \mbold{c})(\mbold{b} \cdot \mbold{d}) - (\mbold{a} \cdot \mbold{d})(\mbold{b} \cdot \mbold{c})
+  = \mbold{a} \cdot ((\mbold{b} \cdot \mbold{d})\mbold{c} - (\mbold{b} \cdot \mbold{c})\mbold{d})
+\end{equation}
+
+式(\ref{eq-1})の右辺を, Formula1.03に従って, Cyclicに入れ替えると, 
+\begin{equation}\label{eq-7}
+  (\mbold{a} \times \mbold{b}) \cdot (\mbold{c} \times \mbold{d})
+  = (\mbold{c} \times \mbold{d}) \cdot (\mbold{a} \times \mbold{b})
+  = \mbold{a} \cdot (\mbold{b} \times (\mbold{c} \times \mbold{d}))
+\end{equation}
+
+lemma1によると, 式(\ref{eq-6}), 式(\ref{eq-7})両者右辺の, $\mbold{a}$と内積を取られる対象のベクトルは, 
+恒等的に等しいため, 任意の$\mbold{a}$に対し, 内積も当然等しくなる. 
+したがって, 式(\ref{eq-1})が成立する. 
 
 
 \end{document}
