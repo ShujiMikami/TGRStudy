@@ -1,0 +1,39 @@
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\title{Question1.06}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  $x(t) = \cos{t}$, $y(t) = \sin{t}$, $f(x, y) = x^2y + 2y$のとき, $f(x(t), y(t)$を$t$で微分. 
+\end{abstract}
+まずは愚直に代入計算. 
+\begin{equation}
+  f(x(t), y(t)) = \cos^2{t}\sin{t} + 2\sin{t}
+\end{equation}
+$t$で微分すると, 
+\begin{equation}
+  \frac{d}{dt}f(x(t), y(t)) = -2\cos{t}\sin^2{t} + \cos^3{t} + 2\cos{t}
+  = 3\cos^3{t}
+\end{equation}
+
+一方, 偏微分と連鎖律を使用すると, 
+\begin{equation}
+  \frac{d}{dt}f(x(t), y(t)) = \frac{\partial f}{\partial x} \frac{d x}{d t}
+  + \frac{\partial f}{\partial y}\frac{dy}{dt}
+  = 2xy \frac{dx}{dt} + (x^2 + 2)\frac{dy}{dt}
+  = -2\cos{t}\sin^2{t} + (\cos^2{t} + 2)\cos{t}
+  = 3\cos^3{t}
+\end{equation}
+で, 双方一致. 
+\end{document}

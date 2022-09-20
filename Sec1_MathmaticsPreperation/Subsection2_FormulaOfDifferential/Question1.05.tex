@@ -1,0 +1,28 @@
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\title{Question1.05}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  3次元ベクトル $\mbold{a}(t)$に関して, $|\mbold{a}(t)| = c (c:const)$のとき, 
+  $\mbold{a}(t) \perp \mbold{a}^\prime(t)$
+  の証明. 
+\end{abstract}
+
+\begin{equation}
+  \frac{d}{dt}|\mbold{a}(t)|^2 = \frac{d}{dt}(\mbold{a}(t) \cdot \mbold{a}(t))
+  = 2 \mbold{a}(t) \cdot \frac{d}{dt}\mbold{a}(t) = \frac{d}{dt}c^2 = 0
+\end{equation}
+内積が0なので, 両者は直交. 
+\end{document}
