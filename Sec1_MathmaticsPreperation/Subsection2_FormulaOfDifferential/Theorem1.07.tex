@@ -1,0 +1,42 @@
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\title{Theorem1.07}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  $f(x(t), y(t))$, $f(x(t), y(t), z(t))$の微分
+  \begin{equation}
+    \frac{df}{dt} = \frac{\partial f}{\partial x}\frac{dx}{dt} 
+    + \frac{\partial f}{\partial y}\frac{dy}{dt}
+  \end{equation}
+  \begin{equation}
+    \frac{df}{dt} = \frac{\partial f}{\partial x}\frac{dx}{dt} 
+    + \frac{\partial f}{\partial y}\frac{dy}{dt}
+    + \frac{\partial f}{\partial z}\frac{dz}{dt}
+  \end{equation}
+
+  $f(x(u, v), y(u, v))$, $f(x(u, v), y(u, v), z(u, v))$の$u$による偏微分
+   \begin{equation}
+    \frac{\partial f}{du} = \frac{\partial f}{\partial x}\frac{\partial x}{\partial u} 
+    + \frac{\partial f}{\partial y}\frac{\partial y}{\partial u}
+  \end{equation}
+  \begin{equation}
+    \frac{\partial f}{\partial u} = \frac{\partial f}{\partial x}\frac{\partial x}{\partial u} 
+    + \frac{\partial f}{\partial y}\frac{\partial y}{\partial u}
+    + \frac{\partial f}{\partial z}\frac{\partial z}{\partial u}
+  \end{equation}
+\end{abstract}
+
+
+\end{document}
