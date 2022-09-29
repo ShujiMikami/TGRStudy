@@ -22,9 +22,9 @@
     \mbold{p}
     =
     \begin{pmatrix}
-      a_1 \\
-      a_2 \\
-      a_3
+      p_1 \\
+      p_2 \\
+      p_3
     \end{pmatrix}
   \]
   $\Sigma^\prime_{o}$において, 
@@ -107,25 +107,27 @@ $\Sigma^\prime_{o}$での$1$方向成分は,
   U_{ij} = \mbold{e}^\prime_i \cdot \mbold{e}_j
 \end{equation}
 と表されることに注意. 
-$(i, j)$成分表示を利用して, ${}^t U U$を計算すると, 
+$(i, j)$成分表示を利用して, $U {}^t U$を計算すると, 
 \begin{equation}\label{eq-7}
-  ({}^t U U)_{ij} = \sum_{k = 1}^3 ({}^t U)_{ik} U_{kj}
-  = \sum_{k = 1}^3 U_{ki}U_{kj}
+  (U {}^t U)_{ij} = \sum_{k = 1}^3 U_{ik} ({}^t U)_{kj}
+  = \sum_{k = 1}^3 U_{ik}U_{jk}
 \end{equation}
-ここで, $U_{ki} = \mbold{e}^\prime_k \mbold{e}_i$は, $\mbold{e}_i$の, $\Sigma^\prime_{o}$系での, $k$成分であるので, それを全3成分に対して加算している, 
-式(\ref{eq-7})の右辺は, $\mbold{e}_i$と, $\mbold{e}_j$の内積である. 
-$\Sigma_{o}$が直交座標系であったことから, 
+ここで, $U_{ik} = \mbold{e}^\prime_i \cdot \mbold{e}_k$は, $\mbold{e}^\prime_i$の, $\Sigma_{o}$系での表示における, $k$成分であり, 
+$U_{ik}U_{jk}$は, $\mbold{e}^\prime_i$, $\mbold{e}^\prime_j$ それぞれのベクトルの, $\Sigma_{o}$系表示での成分の積である.  
+したがって, ２つのベクトルの成分の積を, 全3成分に対して加算している, 
+式(\ref{eq-7})の右辺は, $\mbold{e}^\prime_i$と, $\mbold{e}^\prime_j$の, $\Sigma_{o}$系で計算する内積である. 
+$\Sigma^\prime_{o}$が直交座標系であったことから, 
 \begin{subequations}
   \begin{eqnarray}
-    \mbold{e}_i \cdot \mbold{e}_j = 0, i \neq j \\
-    \mbold{e}_i \cdot \mbold{e}_j = 1, i = j
+    \mbold{e}^\prime_i \cdot \mbold{e}^\prime_j = 0, i \neq j \\
+    \mbold{e}^\prime_i \cdot \mbold{e}^\prime_j = 1, i = j
   \end{eqnarray}
 \end{subequations}
-なので, ${}^t U U$は, 対角成分が$1$, それ以外のすべての成分が$0$の正方行列, すなわち単位行列$E$である. 
-また, $U {}^t U$については, 式(\ref{eq-7})の$kj$成分側を反転させるだけで, 議論に変化はなく, したがって, 
+なので, $U {}^t U$は, 対角成分が$1$, それ以外のすべての成分が$0$の正方行列, すなわち単位行列$E$である. 
+よって, ${}^t U = U^{-1}$であり, 前から${}^t U$, 後ろから$U$を作用すれば, 
 \[
-  {}^t U U = U {}^t U = E
+  U {}^t U = U {}^t U = E
 \]
 である. 
-
+なお, 式(\ref{eq-7})で, ${}^t U U$を計算してしまうと, $\Sigma^\prime_{o}$系での, $\mbold{e}_i$と, $\mbold{e}_j$の内積計算の議論になってしまい, これは前提として次のTheoremが証明されるまで使えないので, 逆を計算している. 
 \end{document}
