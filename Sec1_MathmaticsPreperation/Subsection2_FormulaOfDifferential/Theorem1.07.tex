@@ -16,7 +16,7 @@
 
 \begin{abstract}
   $f(x(t), y(t))$, $f(x(t), y(t), z(t))$の微分
-  \begin{equation}
+  \begin{equation}\label{eq-1}
     \frac{df}{dt} = \frac{\partial f}{\partial x}\frac{dx}{dt} 
     + \frac{\partial f}{\partial y}\frac{dy}{dt}
   \end{equation}
@@ -27,7 +27,7 @@
   \end{equation}
 
   $f(x(u, v), y(u, v))$, $f(x(u, v), y(u, v), z(u, v))$の$u$による偏微分
-   \begin{equation}
+  \begin{equation}\label{eq-3}
     \frac{\partial f}{du} = \frac{\partial f}{\partial x}\frac{\partial x}{\partial u} 
     + \frac{\partial f}{\partial y}\frac{\partial y}{\partial u}
   \end{equation}
@@ -77,11 +77,11 @@ $x = x(t)$, $y = y(t)$というのは, $f(x, y)$が定義される, 全ての$(x
 \]
 により, 定義から, スモールオーになる. 
 
-式(\ref{eq-9})の右辺第一項は, $f$が, $x$, $y$について, $C^{\infty}$級であるという前提がある(本の最初の章で, この本で扱う関数はすべて何回でも微分可能, と述べている)ので, 
+式(\ref{eq-9})の右辺第一項は, $f$が, $(x, y)$について, $C^{\infty}$級であるという前提がある(本の最初の章で, この本で扱う関数はすべて何回でも微分可能, と述べている)ので, 
 \[
   \frac{\partial f(x, y)}{\partial x} \equiv g(x, y)
 \]
-とすると, 
+とすると, $g(x, y)$も微分可能で, 
 \begin{equation}\label{eq-10}
   \frac{\partial f(x, y + \Delta y)}{\Delta x} 
   = g(x, y + \Delta y) 
@@ -100,7 +100,7 @@ $x = x(t)$, $y = y(t)$というのは, $f(x, y)$が定義される, 全ての$(x
 \end{equation}
 
 この議論は, 3変数の場合でも同様. 
-
+\section{パラメータによる拘束}
 \subsection{パラメータ1つの場合}
 Sec.\ref{sec-1}の議論は, $f(x, y)$が定義されるすべての点集合$(x, y)$に対しての議論であったが, ここに, $x = x(t)$, $y = y(t)$という媒介変数を入れることは, すなわち, $(x, y)$で表される平面領域の中を通る, 連続曲線という, 部分集合に議論を限定するということであり, したがって, この媒介変数が存在しても, Sec.\ref{sec-1}の結論は有効である. 
 ただし, 平面領域, その中を通る連続曲線, というのは, あくまで対象関数が連続, かつ微分可能という前提があるからである. 
@@ -124,7 +124,7 @@ $x(t)$, $y(t)$ともに微分可能, すなわち, $\Delta x / \Delta t$, $\Delt
 \]
 により, 無くなる. 
 第二項については, $\Delta y \to 0$なので, 無くなる. 
-第四, 五項については, 
+第四, 六項については, 
 \[
   \frac{o(\Delta x)}{\Delta t} = \frac{o(\Delta x)}{\Delta x}\frac{\Delta x}{\Delta t}
 \]
@@ -135,4 +135,74 @@ $x(t)$, $y(t)$ともに微分可能, すなわち, $\Delta x / \Delta t$, $\Delt
 \end{equation}
 となる. 
 
+\subsection{2変数の場合}
+パラメータが, 複数の場合は, 式(\ref{eq-11})における, $\Delta x$, $\Delta y$が, 複数パラメータにより変動する, という考え方になる. 
+式(\ref{eq-3})の場合, パラメータ$u$,$v$ともに動きうるが, $u$による偏微分なので, $u$のみの変動により引き起こされる変化である. 式で書くならば, 
+\begin{subequations}
+  \begin{eqnarray}
+    \Delta x = x(u + \Delta u, v) - x(u, v) \label{eq-14a}\\
+    \Delta y = y(u + \Delta u, v) - y(u, v) \label{eq-14b}
+  \end{eqnarray}
+\end{subequations}
+式(\ref{eq-14a}), (\ref{eq-14b})は, $x$, $y$が微分可能ならば, 
+\begin{subequations}
+  \begin{eqnarray}
+    \Delta x = \frac{\partial x(u, v)}{\partial u} \Delta u + o(\Delta u)  \label{eq-15a} \\
+    \Delta y = \frac{\partial y(u, v)}{\partial u} \Delta u + o(\Delta u)  \label{eq-15b}
+  \end{eqnarray}
+\end{subequations}
+であり, 計算処理としては, 式(\ref{eq-12})と全く同様であり,
+\[
+  \frac{\Delta x \Delta y}{\Delta u}
+  = \frac{\Delta x}{\Delta u}\frac{\Delta y}{\Delta u} \Delta u
+  = \left(\frac{\partial x}{\partial u} + \frac{o(\Delta u)}{\Delta u}\right)
+  \left(\frac{\partial y}{\partial u} + \frac{o(\Delta u)}{\Delta u}\right) \Delta u
+\]
+により, $\Delta u \to 0$において無くなり, 
+第四, 六項の処理は全く同様なので無くなる. 
+第三, 五項の処理は, 式(\ref{eq-15a}), (\ref{eq-15b})により, 
+\[
+  \frac{\Delta x}{\Delta u} \to \frac{\partial x}{\partial u}
+\]
+であるため, 式(\ref{eq-3})が成立する. 
+
+\section{図形的な解釈}
+$z = f(x, y)$とし, 点$(x, y, z)$の集合を考えると, これは, 3次元空間内での曲面を表す. 
+$\Delta f = f(x + \Delta x, y + \Delta y) - f(x, y)$は, 曲面上の点$(x, y, z = f(x, y))$と, $(x + \Delta x, y + \Delta y, z^\prime = f(x + \Delta x, y + \Delta y))$の, $z$成分の差である. 
+
+一方, $x$に関する偏微分の定義の分子, 
+\[
+  f(x + \Delta x, y) - f(x, y)
+\]
+は, 点$(x, y, z)$を通り, $y$が一定, すなわち, $xz$平面に並行な面で, 曲面を切断したときの, 曲線の, 点$(x, z)$における接線に沿った, $x$成分が$\Delta x$のベクトルの, $z$成分である. 
+$y$に関する偏微分も同様に, $yz$平面に平行な面に見える, 曲線の, 点$(y, z)$における接線に沿った, $y$成分が$\Delta y$のベクトルの, $z$成分である. 
+この事実により, 式(\ref{eq-11})が意味するところは, 
+\begin{equation}
+  \begin{pmatrix}
+    \Delta x \\
+    \Delta y \\
+    f(x + \Delta x, y + \Delta y) - f(x, y)
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    \Delta x \\
+    0 \\
+    f(x + \Delta x, y) - f(x, y)
+  \end{pmatrix}
+  +
+  \begin{pmatrix}
+    0 \\
+    \Delta y \\
+    f(x, y + \Delta y) - f(x, y)
+  \end{pmatrix}
+  +
+  O(\Delta x) + O(\Delta y)
+\end{equation}
+右辺第一項, 第二項は, 切断面が, $xz$平面か, $yz$平面かの違いだけで, どちらも$(x, y, z)$における接線であること, 及び, それらが直行することから, 2本の独立したベクトルであり, 平面を構成する. 
+式の意味はすなわち, 曲面$z = f(x, y)$上での, ある点$(x, y, z)$からの, 微小な近傍点$(x + \Delta x, y + \Delta y, f(x + \Delta x, y + \Delta y))$は, 
+$(x, y, z)$における$x$方向, $y$方向の接線で張られる, 平面上の点$(x + \Delta x, y + \Delta y, z + \Delta z)$に対し, $\Delta x, \Delta y \to 0$の極限において, 一致する, という意味である. 
+つまり, これは, この平面が, $z = f(x, y)$の$(x, y, z)$における接平面となる, ということを意味する. 
+以上により, 偏微分の概念により, 一変数関数の微分の拡張となっていることがわかる. 
+
+複数パラメータによる微分でも偏微分で表現できたという事実により, 微分可能な関数による座標変換であれば, 好きな座標系を選んで, 微分を計算することできる, ということになる. 
 \end{document}
