@@ -1,0 +1,131 @@
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\title{Theorem1.08}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  直交座標系$\Sigma_{o}$, $\Sigma^\prime_{o}$は, 原点と, スケールが一致しているとき, 
+  ベクトル$\mbold{p}$が, 
+  $\Sigma_{o}$において, 
+  \[
+    \mbold{p}
+    =
+    \begin{pmatrix}
+      a_1 \\
+      a_2 \\
+      a_3
+    \end{pmatrix}
+  \]
+  $\Sigma^\prime_{o}$において, 
+  \[
+    \mbold{p}
+    =
+    \begin{pmatrix}
+      p^\prime_1 \\
+      p^\prime_2 \\
+      p^\prime_3
+    \end{pmatrix}
+  \]
+  と成分表示されるとき, 
+  \begin{equation}
+    {}^\exists U, 
+    \begin{pmatrix}
+      p^\prime_1 \\
+      p^\prime_2 \\
+      p^\prime_3
+    \end{pmatrix}
+    = U
+    \begin{pmatrix}
+      p_1 \\
+      p_2 \\
+      p_3
+    \end{pmatrix}
+    ,
+    U{}^t U = E
+  \end{equation}
+\end{abstract}
+
+\section*{本証明}
+$\Sigma_{o}$の基底ベクトルを, $\{ \mbold{e}_i \}_{i = 1}^{3}$とすると, 
+\begin{equation}
+  \mbold{p} = \sum_{i = 1}^3 p_i \mbold{e}_i
+\end{equation}
+
+$\Sigma^\prime_{o}$の基底ベクトルを, $\{ \mbold{e}^\prime_i \}_{i = 1}^{3}$とすると, 
+$\Sigma^\prime_{o}$での$1$方向成分は, 
+\begin{equation}
+  p^\prime_1 = \mbold{e}^\prime_1 \cdot \mbold{p}
+  =\sum_{i = 1}^3 p_i \mbold{e}^\prime_1 \cdot \mbold{e}_i
+\end{equation}
+他の成分も同様なので, 縦に並べると, 
+\begin{equation}
+  \begin{pmatrix}
+    p^\prime_1 \\
+    p^\prime_2 \\
+    p^\prime_3
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    p_1 \mbold{e}^\prime_1 \cdot \mbold{e}_1 + p_2 \mbold{e}^\prime_1 \cdot \mbold{e}_2 + p_3 \mbold{e}^\prime_1 \cdot \mbold{e}_3 \\
+    p_1 \mbold{e}^\prime_2 \cdot \mbold{e}_1 + p_2 \mbold{e}^\prime_2 \cdot \mbold{e}_2 + p_3 \mbold{e}^\prime_2 \cdot \mbold{e}_3 \\
+    p_1 \mbold{e}^\prime_3 \cdot \mbold{e}_1 + p_2 \mbold{e}^\prime_3 \cdot \mbold{e}_2 + p_3 \mbold{e}^\prime_3 \cdot \mbold{e}_3 
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    \mbold{e}^\prime_1 \cdot \mbold{e}_1 & \mbold{e}^\prime_1 \cdot \mbold{e}_2 & \mbold{e}^\prime_1 \cdot \mbold{e}_3 \\
+    \mbold{e}^\prime_2 \cdot \mbold{e}_1 & \mbold{e}^\prime_2 \cdot \mbold{e}_2 & \mbold{e}^\prime_2 \cdot \mbold{e}_3 \\
+    \mbold{e}^\prime_3 \cdot \mbold{e}_1 & \mbold{e}^\prime_3 \cdot \mbold{e}_2 & \mbold{e}^\prime_3 \cdot \mbold{e}_3
+  \end{pmatrix}
+  \begin{pmatrix}
+    p_1 \\
+    p_2 \\
+    p_3
+  \end{pmatrix}
+\end{equation}
+よって, 
+\begin{equation}
+  U = 
+  \begin{pmatrix}
+    \mbold{e}^\prime_1 \cdot \mbold{e}_1 & \mbold{e}^\prime_1 \cdot \mbold{e}_2 & \mbold{e}^\prime_1 \cdot \mbold{e}_3 \\
+    \mbold{e}^\prime_2 \cdot \mbold{e}_1 & \mbold{e}^\prime_2 \cdot \mbold{e}_2 & \mbold{e}^\prime_2 \cdot \mbold{e}_3 \\
+    \mbold{e}^\prime_3 \cdot \mbold{e}_1 & \mbold{e}^\prime_3 \cdot \mbold{e}_2 & \mbold{e}^\prime_3 \cdot \mbold{e}_3
+  \end{pmatrix}
+\end{equation}
+により, 座標変換が与えられることがわかった. この行列$U$の$(i, j)$成分は, 
+\begin{equation}
+  U_{ij} = \mbold{e}^\prime_i \cdot \mbold{e}_j
+\end{equation}
+と表されることに注意. 
+$(i, j)$成分表示を利用して, ${}^t U U$を計算すると, 
+\begin{equation}\label{eq-7}
+  ({}^t U U)_{ij} = \sum_{k = 1}^3 ({}^t U)_{ik} U_{kj}
+  = \sum_{k = 1}^3 U_{ki}U_{kj}
+\end{equation}
+ここで, $U_{ki} = \mbold{e}^\prime_k \mbold{e}_i$は, $\mbold{e}_i$の, $\Sigma^\prime_{o}$系での, $k$成分であるので, それを全3成分に対して加算している, 
+式(\ref{eq-7})の右辺は, $\mbold{e}_i$と, $\mbold{e}_j$の内積である. 
+$\Sigma_{o}$が直交座標系であったことから, 
+\begin{subequations}
+  \begin{eqnarray}
+    \mbold{e}_i \cdot \mbold{e}_j = 0, i \neq j \\
+    \mbold{e}_i \cdot \mbold{e}_j = 1, i = j
+  \end{eqnarray}
+\end{subequations}
+なので, ${}^t U U$は, 対角成分が$1$, それ以外のすべての成分が$0$の正方行列, すなわち単位行列$E$である. 
+また, $U {}^t U$については, 式(\ref{eq-7})の$kj$成分側を反転させるだけで, 議論に変化はなく, したがって, 
+\[
+  {}^t U U = U {}^t U = E
+\]
+である. 
+
+\end{document}
