@@ -1,0 +1,165 @@
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\title{Theorem1.09}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  直交座標系$\Sigma_{o} \to \Sigma^\prime_{o}$は, 直交変換.
+  位置ベクトル$\mbold{a}$, $\mbold{b}$が, 
+  $\Sigma_{o}$において, 
+  \begin{eqnarray*}
+    \mbold{a}
+    =
+    \begin{pmatrix}
+      a_1 \\
+      a_2 \\
+      a_3
+    \end{pmatrix} \\
+    \mbold{b}
+    =
+    \begin{pmatrix}
+      b_1 \\
+      b_2 \\
+      b_3
+    \end{pmatrix} \\
+  \end{eqnarray*}
+  $\Sigma^\prime_{o}$において, 
+  \begin{eqnarray*}
+    \mbold{a}
+    =
+    \begin{pmatrix}
+      a^\prime_1 \\
+      a^\prime_2 \\
+      a^\prime_3
+    \end{pmatrix} \\
+    \mbold{b}
+    =
+    \begin{pmatrix}
+      b^\prime_1 \\
+      b^\prime_2 \\
+      b^\prime_3
+    \end{pmatrix} \\
+  \end{eqnarray*}
+
+  と成分表示されるとき, 
+  \begin{equation}
+    a_1 b_1 + a_2 b_2 + a_3 b_3 = a^\prime_1 b^\prime_1 + a^\prime_2 b^\prime_2 + a^\prime_3 b^\prime_3
+  \end{equation}
+\end{abstract}
+
+\section*{本証明}
+Theorem1.08により, 直交行列$U$があって, 
+\begin{equation}
+  \begin{pmatrix}
+    a^\prime_1 \\
+    a^\prime_2 \\
+    a^\prime_3
+  \end{pmatrix}
+  =
+  U
+  \begin{pmatrix}
+    a_1 \\
+    a_2 \\
+    a_3
+  \end{pmatrix}
+\end{equation}
+
+\begin{equation}
+  a^\prime_1 b^\prime_1 + a^\prime_2 b^\prime_2 + a^\prime_3 b^\prime_3
+  = 
+  \begin{pmatrix}
+    a^\prime_1 & a^\prime_2 & a^\prime_3 
+  \end{pmatrix}
+  \begin{pmatrix}
+    a^\prime_1 \\
+    a^\prime_2 \\
+    a^\prime_3
+  \end{pmatrix}
+  = \transp{ 
+      \begin{pmatrix}
+        a^\prime_1 \\
+        a^\prime_2 \\
+        a^\prime_3
+      \end{pmatrix}
+    }
+  \begin{pmatrix}
+    a^\prime_1 \\
+    a^\prime_2 \\
+    a^\prime_3
+  \end{pmatrix}
+\end{equation}
+なので, $U$を使用して書き換えると, 
+\begin{equation}
+  a^\prime_1 b^\prime_1 + a^\prime_2 b^\prime_2 + a^\prime_3 b^\prime_3
+  = \transp{ 
+      \begin{pmatrix}
+        a^\prime_1 \\
+        a^\prime_2 \\
+        a^\prime_3
+      \end{pmatrix}
+    }
+  \begin{pmatrix}
+    a^\prime_1 \\
+    a^\prime_2 \\
+    a^\prime_3
+  \end{pmatrix}
+  = \transp{
+      \left(
+      U
+      \begin{pmatrix}
+        a_1 \\
+        a_2 \\
+        a_3
+      \end{pmatrix}
+      \right)
+    }
+    U
+  \begin{pmatrix}
+    a_1 \\
+    a_2 \\
+    a_3
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    a_1 & a_2 & a_3 \\
+  \end{pmatrix}
+  \transp{U}
+  U
+  \begin{pmatrix}
+    a_1 \\
+    a_2 \\
+    a_3
+  \end{pmatrix}
+\end{equation}
+Theorem1.08より, $\transp{U} U = E$なので, 
+
+\begin{equation}
+  a^\prime_1 b^\prime_1 + a^\prime_2 b^\prime_2 + a^\prime_3 b^\prime_3
+  =
+  \begin{pmatrix}
+    a_1 & a_2 & a_3 \\
+  \end{pmatrix}
+  \begin{pmatrix}
+    a_1 \\
+    a_2 \\
+    a_3
+  \end{pmatrix}
+  =
+  a_1 b_1 + a_2 b_2 + a_3 b_3
+\end{equation}
+
+\end{document}
