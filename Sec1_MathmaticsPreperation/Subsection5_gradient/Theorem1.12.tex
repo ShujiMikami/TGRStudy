@@ -29,7 +29,7 @@
 
 \section*{lemma}
 等高線とは, $f(x, y)$が一定値$z_0$を取る, $(x, y)$の集合に対し, $(x, y, z_0)$が描く曲線のことである. 
-ある$z_0$が与えられたとき, 等高線が一意に決まるとき, 等高線上の任意の点において, 
+ある$z_0$が与えられたとき, 等高線が点ではなく, 曲線として存在し, 一意に決まるとき, 等高線上の任意の点において, 
 \begin{subequations}
   \begin{eqnarray}
     \frac{\partial f(x, y)}{\partial x} \neq 0 \\
@@ -40,7 +40,6 @@
 
 \section*{本証明}
 \subsection*{"$\grad f$は等高線と直交"の証明}
-等高線とは, $f(x, y)$が一定値$z_0$を取る, $(x, y)$の集合に対し, $(x, y, z_0)$が描く曲線のことである. 
 \[
   F(x, y) \equiv f(x, y) - z_0
 \]
@@ -48,13 +47,16 @@
 \[
   F(x, y) = 0
 \]
-なので, $F(x, y)$に対し, 陰関数定理が成立し, $(x, y)$の十分近傍で, $y = y(x)$なる$y(x)$が存在する. 
-したがって, $F$の変化は, $x$の変化として表現でき, Theorem1.07を利用すると, 
+なので, $F(x, y)$に対し, 陰関数定理により, $F_y(x, y) \neq 0$ならば, $(x, y)$の十分近傍で, $y = y(x)$なる$C^1$級の$y(x)$が存在する. 
+または, $F_y(x, y) = 0$であっても, $F_x(x, y) \neq 0$ならば, $x = x(y)$なる$C^1$級の$x(y)$が存在する. 
+どちらのケースでも, 議論は対称なので, 今は, $F_y(x, y) \neq 0$のケースで議論をすすめる. 
+
+$F$の変化は, $x$の変化として表現でき, Theorem1.07を利用すると, 
 \begin{equation}\label{eq-1}
   \frac{dF(x, y(x))}{dx} = \frac{\partial F}{\partial x}\frac{dx}{dx} + \frac{\partial F}{\partial y}\frac{dy}{dx}
   = \frac{\partial F}{\partial x} + \frac{\partial F}{\partial y}\frac{dy}{dx} = 0
 \end{equation}
-$\grad$の定義より, 式(\ref{eq-1})は, 
+$\grad$の定義, および, 陰関数定理の前提条件として, $F_y(x, y) \neq 0$より, 式(\ref{eq-1})は, 
 \begin{equation}
   (\grad F) 
   \cdot
@@ -71,7 +73,9 @@ $\grad$の定義より, 式(\ref{eq-1})は,
   \end{pmatrix}
   = 0
 \end{equation}
-ベクトル$(1, dy/dx)$は, $f(x, y) = z_0$を満たす, $y = y(x)$の, $x$における接線に沿って, $x$軸方向に$1$進むベクトルであり, 
+ベクトル$(1, dy/dx)$は, $f(x, y) = z_0$を満たす, $y = y(x)$の, $x$における接線に沿って, $x$軸方向に$1$進むベクトルであり,
+それとの内積が$0$なので, 等高線と勾配は直交する. 
+
 
 
 \end{document}
