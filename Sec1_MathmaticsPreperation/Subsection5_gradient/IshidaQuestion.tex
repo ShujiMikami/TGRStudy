@@ -1,0 +1,44 @@
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+
+\title{石田さんへの相談事項}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+  ある, $C^1$級の$2$変数関数$f(x, y)$が, $D \subset \mathbb{R}^2$で定義されているとき, 
+  $f(x, y)$の等高線と, $\grad{f}$が直交することを証明したい. 
+  多くの証明においては, $x = x(t)$, $y = y(t)$置くことで, かんたんに証明しているが, 
+  こう置くことができることが, 厳密に成り立つのか, 例外があるとすればどのようなケースなのかを理解したい.
+
+  また, 陰関数定理を使うことで, ある程度ラフに証明することができるところまではたどり着いているが, 陰関数定理の前提を満たさない$C^1$級の$f(x, y)$の例が容易に思いついてしまい, その場合の扱いはどう理解すればいいのか, 困っている. 
+\end{abstract}
+\section{陰関数表示できるときの媒介変数表示可能性について}
+媒介変数表示に直し, $t$による全微分を実行して説明する証明方法は, 前提条件として, 
+必ず, $C^1$級の関数が存在し, $x(t)$, $y(t)$と表すことができる, ということが暗に認められている. 
+
+$f(x, y) = const$であるとき, $x = x(t)$, $y = y(t)$なる, $C^1$級の, $x(t)$, $y(t)$が必ず存在することはどのように証明されるか? 限定的なケースでのみ成り立つならば, その条件はなんであるか?
+
+\section{陰関数定理の前提が満たされない場合の解釈について}
+$\nabla f \neq \mbold{0}$のとき, 陰関数定理により, $f(x, y) = C$という陰関数表示は, $x$, もしくは, $y$について解くことができる. それにより, $f(x, y(x)$, もしくは, $f(x(y), y)$として, $f$の全微分計算により, 勾配-等高線間の直交関係が導けるが, $\nabla f = \mbold{0}$というケースが容易に考えられる. 
+\begin{equation}
+  f(x, y) = x^3
+\end{equation}
+である. $f(x, y)$は, $x = 0$において, $f_x(0, 0) = f_y(0, 0) = 0$であるため, 陰関数定理の前提が満たされず, したがって, 上記の議論による勾配直交の理屈が通らない. 
+しかし, 図としては, 3次関数のグラフが, $y$方向に広がっているだけの, なめらかな曲面であり, 等高線の存在は容易に理解でき, $x = 0$においても, $y$成分が$0$となるベクトルが指定されるべきである. 
+このようなケースはどのように扱えばよいか. 
+\end{document}

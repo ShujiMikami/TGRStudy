@@ -1,0 +1,37 @@
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+
+\title{Question1.11}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  \[
+    f(x, y, z) = e^x \cos(yz)
+  \]
+  $\grad f$の計算. 
+\end{abstract}
+
+\section*{計算}
+定義どおりに計算するだけ. 
+\begin{eqnarray*}
+  \frac{\partial f}{\partial x} = e^x \cos(yz) \\
+  \frac{\partial f}{\partial y} = -z e^x \sin(yz) \\
+  \frac{\partial f}{\partial z} = -y e^x \sin(yz)
+\end{eqnarray*}
+
+\end{document}
