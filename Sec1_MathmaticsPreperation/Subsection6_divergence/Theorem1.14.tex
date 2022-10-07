@@ -140,7 +140,7 @@ Theorem1.07を適用すれば,
   \sum_k U_{ik}\frac{\partial A_k}{\partial x^\prime_j}
   = \sum_k U_{ik} \sum_l \frac{\partial A_k}{\partial x_l}\frac{\partial x_l}{\partial x^\prime_j}
 \end{equation} 
-式(\ref{eq-11})を利用すると, 
+式(\ref{eq-11})を, Theorem1.08を利用すると, 
 \begin{equation}
   \frac{\partial x_l}{\partial x^\prime_j} = \sum_m \transp{U}_{lm}\frac{\partial x^\prime_m}{\partial x^\prime_j}
 \end{equation}
@@ -161,4 +161,8 @@ Theorem1.07を適用すれば,
 \end{equation}
 により, 式(\ref{eq-2})が成り立つ. 
 
+\subsection{直交変換ではない場合}
+逆変換が存在するが, 直交変換でない場合も, 主張は成立する. 
+そもそも途中で使用した, Theorem1.08の転置行列と逆行列が一致する, という性質は, 実は全く使う必要がなく, 逆行列として扱えばよかった話である. 
+したがって, 本主張が成立する条件は, 変換が, 線形変換であり, その逆変換が定義できる, 全単射写像となっていること, である. 
 \end{document}
