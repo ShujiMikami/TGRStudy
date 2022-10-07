@@ -1,0 +1,164 @@
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+%\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+\newcommand*{\divg}{{\rm div}}
+
+\newcommand*{\trace}[1]{{\rm tr}\!{#1}}
+
+\title{Theorem1.14}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  直交座標系$\Sigma_{o}$, $\Sigma_{o}^\prime$に対し, 
+  ある3次元ベクトル場が, 
+  \begin{subequations}
+    \begin{eqnarray}
+      && \mbold{A} = (A_x(x, y, z), A_y(x, y, z), A_z(x, y, z)) 
+      ~~~ at ~~ \Sigma_{o} \\
+      && \mbold{A^\prime} = (A^\prime_x(x^\prime, y^\prime, z^\prime), 
+      A^\prime_y(x^\prime, y^\prime, z^\prime), 
+      A^\prime_z(x^\prime, y^\prime, z^\prime)) 
+      ~~~ at ~~ \Sigma^\prime_{o}
+    \end{eqnarray}
+  \end{subequations}
+  と表されるとき, 
+  \begin{equation}\label{eq-2}
+    \frac{\partial A_x}{\partial x}
+    + \frac{\partial A_y}{\partial y}
+    + \frac{\partial A_z}{\partial z}
+    = \frac{\partial A_x^\prime}{\partial x^\prime}
+    +\frac{\partial A_y^\prime}{\partial y^\prime}
+    +\frac{\partial A_z^\prime}{\partial z^\prime}
+  \end{equation}
+  すなわち, 発散は, 直交座標のとり方によらない. 
+\end{abstract}
+
+\section{本証明}
+直交座標系の属性は, 
+\begin{itemize}
+  \item 原点
+  \item 基底ベクトル
+\end{itemize}
+であり, 原点の差異は並進, 基底ベクトルの差異は, 直交変換により, 表現されるので, それぞれの場合に分けて考えていく. 
+
+\subsection{並進}
+並進変換は, 
+\begin{subequations}
+  \begin{eqnarray}
+    x^\prime = x + \Delta x \\
+    y^\prime = y + \Delta y \\
+    z^\prime = z + \Delta z
+  \end{eqnarray}
+\end{subequations}
+で表される, 原点のみの移動である. このとき, 基底ベクトルは, 変化しないので, 結局各成分について, 
+\begin{equation}\label{eq-4}
+  A_i(x, y, z) = A^\prime_i(x^\prime, y^\prime, z^\prime). ~~ i = x, y, z
+\end{equation}
+が成立する.
+
+並進変換の関係は全射になっているので, $x^\prime(x, y, z) = x + \Delta x$のような媒介変数表示の関係であると捉えることができる. 
+したがって, $A_x^\prime(x^\prime, y^\prime, z^\prime)$に対する, $x$の偏微分を考えることができ, 式(\ref{eq-4})から, 
+\begin{equation}\label{eq-5}
+  \frac{\partial A_x(x, y, z)}{\partial x} = \frac{\partial A^\prime_x(x^\prime(x, y, z), y^\prime(x, y, z), z^\prime(x, y, z))}{\partial x}. 
+\end{equation}
+
+Theorem1.07を利用すると, 式(\ref{eq-5})は, 
+\begin{equation}\label{eq-6}
+  \frac{\partial A^\prime_x(x^\prime(x, y, z), y^\prime(x, y, z), z^\prime(x, y, z))}{\partial x}
+  = \frac{\partial A^\prime_x}{\partial x^\prime}\frac{\partial x^\prime}{\partial x}
+  + \frac{\partial A^\prime_x}{\partial y^\prime}\frac{\partial y^\prime}{\partial x}
+  + \frac{\partial A^\prime_x}{\partial z^\prime}\frac{\partial y^\prime}{\partial x}
+  = \frac{\partial A_x^\prime}{\partial x^\prime}
+\end{equation}
+よって, 
+\begin{equation}
+  \frac{\partial A^\prime_x}{\partial x^\prime} = \frac{\partial A_x}{\partial x}
+\end{equation}
+他の軸についても同様の議論をすれば, 式(\ref{eq-2})が成立する. 
+
+\subsection{直交変換}
+直交変換は, 
+\begin{equation}
+  \begin{pmatrix}
+    x^\prime \\
+    y^\prime \\
+    z^\prime
+  \end{pmatrix}
+  = U 
+  \begin{pmatrix}
+    x \\
+    y \\
+    z 
+  \end{pmatrix}.
+  ~~
+  \transp{U} U = E
+\end{equation}
+である. 
+$x$成分だけを表現すると, 
+\begin{equation}
+  x^\prime = U_{11}x + U_{12}y + U_{13}z.
+\end{equation}
+この変換も空間全射になっており, Theorem1.08により, $U$の逆行列が存在することから, 全単射になっている. また, 逆行列と転置行列が等しいので,  
+\begin{equation}\label{eq-11}
+  x = \transp{U}_{11}x^\prime + \transp{U}_{12}y^\prime + \transp{U}_{13}z^\prime.
+\end{equation}
+も, 全単射である. 
+
+ここで, 
+\begin{subequations}
+  \begin{eqnarray}
+    && V_{ij} \equiv \frac{\partial A_i(x, y, z)}{\partial x_j} \\
+    && W_{ij} \equiv \frac{\partial A^\prime_i(x^\prime, y^\prime, z^\prime)}{\partial x^\prime_j}
+  \end{eqnarray}
+\end{subequations}
+と定義すると, 
+式(\ref{eq-2})の左辺は, $\trace{V}$, 右辺は, $\trace{W}$となる. 
+
+座標変換において, $\mbold{A}$も同じ変換を受けるので, 
+\begin{equation}\label{eq-12}
+  W_{ij} = \frac{\partial}{\partial x^\prime_j}\sum_k U_{ik}A_k
+  = \sum_k U_{ik}\frac{\partial A_k}{\partial x^\prime_j}.
+\end{equation}
+
+式(\ref{eq-11})も全単射であることから, 式(\ref{eq-12})中の$A_k$の引数である, $x$, $y$, $z$は, $x^\prime$, $y^\prime$, $z^\prime$によるパラメータ表示を$C^1$級で行うことができ, 
+Theorem1.07を適用すれば, 
+\begin{equation}\label{eq-13}
+  \sum_k U_{ik}\frac{\partial A_k}{\partial x^\prime_j}
+  = \sum_k U_{ik} \sum_l \frac{\partial A_k}{\partial x_l}\frac{\partial x_l}{\partial x^\prime_j}
+\end{equation} 
+式(\ref{eq-11})を利用すると, 
+\begin{equation}
+  \frac{\partial x_l}{\partial x^\prime_j} = \sum_m \transp{U}_{lm}\frac{\partial x^\prime_m}{\partial x^\prime_j}
+\end{equation}
+であるが, 右辺の微分項は, $m = j$のときは$1$で, それ以外は$0$になるので, $m$についての和の結果は, $\transp{U}_{lj}$になる. 
+よって, 式(\ref{eq-13})は, 
+\begin{equation}
+  \sum_k U_{ik} \frac{\partial A_k}{\partial x^\prime_j} 
+  = \sum_k U_{ik} \sum_l V_{kl} \transp{U}_{lj}
+  = (U V \transp{U})_{ij}
+\end{equation}
+つまり, 行列として, 
+\begin{equation}
+  W = UV\transp{U}.
+\end{equation}
+行列のトレースの性質と, Theorem1.08を利用し, 
+\begin{equation}
+  \trace{W} = \trace{(UV\transp{U})} = \trace{(\transp{U} UV)} = \trace{V}
+\end{equation}
+により, 式(\ref{eq-2})が成り立つ. 
+
+\end{document}
