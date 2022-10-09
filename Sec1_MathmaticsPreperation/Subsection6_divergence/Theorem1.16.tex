@@ -1,0 +1,183 @@
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+%\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+\newcommand*{\divg}{{\rm div}}
+\newcommand*{\rot}{{\rm rot}}
+\newcommand*{\trace}[1]{{\rm tr}\!{#1}}
+
+
+\title{Theorem1.16}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  直交座標系$\Sigma_{o}$, $\Sigma_{o}^\prime$に対し, 
+  ある3次元ベクトル場が, 
+  \begin{subequations}
+    \begin{eqnarray}
+      && \mbold{A} = (A_x(x, y, z), A_y(x, y, z), A_z(x, y, z)) 
+      ~~~ at ~~ \Sigma_{o} \\
+      && \mbold{A^\prime} = (A^\prime_x(x^\prime, y^\prime, z^\prime), 
+      A^\prime_y(x^\prime, y^\prime, z^\prime), 
+      A^\prime_z(x^\prime, y^\prime, z^\prime)) 
+      ~~~ at ~~ \Sigma^\prime_{o}
+    \end{eqnarray}
+  \end{subequations}
+  と表されるとき, 
+  \begin{equation}\label{eq-2}
+    \rot \mbold{A}^\prime = (\rot \mbold{A})^\prime
+  \end{equation}
+  すなわち, 回転は, ベクトルと同じ変換を受ける. 
+\end{abstract}
+
+\section{lemma}
+直交座標系$\Sigma_{o}$, $\Sigma_{o}^\prime$の間での直交変換$U$に対し, 
+2つのベクトルの外積結果は, それぞれのベクトルと同様に変換を受ける. 
+すなわち, 
+\begin{equation}\label{eq-3}
+  U\mbold{a} \times U\mbold{b} = U(\mbold{a} \times \mbold{b}).
+\end{equation}
+\subsection*{証明}
+$\Sigma_o$系での成分表示をそれぞれ, $(a_1, a_2, a_3)$, $(b_1, b_2, b_3)$とし, $\Sigma_o^\prime$系では, 同じ記号に$\prime$をつけることにすると, 
+\begin{equation}
+  \begin{pmatrix}
+    a_1^\prime \\
+    a_2^\prime \\
+    a_3^\prime
+  \end{pmatrix}
+  =
+  U
+  \begin{pmatrix}
+    a_1 \\
+    a_2 \\
+    a_3
+  \end{pmatrix}
+\end{equation}
+であり, 式(\ref{eq-3})の左辺のうち, $x$成分だけ計算すると, 
+\begin{equation}
+  (U\mbold{a} \times U\mbold{b})_1 = a_2^\prime b_3^\prime - a_3^\prime b_2^\prime
+  = (\sum_i U_{2i}a_i)(\sum_i U_{3i}b_i) - (\sum_i U_{3i}a_i)(\sum_i U_{2i}b_i)
+\end{equation}
+和を統合し, 計算をさらに進めると, 
+\begin{eqnarray}\label{eq-6}
+  && (\sum_i U_{2i}a_i)(\sum_i U_{3i}b_i) - (\sum_i U_{3i}a_i)(\sum_i U_{2i}b_i) \nonumber \\
+  && = \sum_{j, k}(U_{2j}U_{3k}a_j b_k - U_{3j}U_{2k}a_j b_k) \nonumber \\
+  && = \sum_{j, k}(U_{2j}U_{3k} - U_{3j}U_{2k})a_j b_k
+\end{eqnarray}
+最後の項は, $j = k$の成分が残らないので, $j < k$の場合と, $j > k$の場合に分けることができ, 
+\begin{eqnarray}\label{eq-7}
+  && \sum_{j, k}(U_{2j}U_{3k} - U_{3j}U_{2k})a_j b_k \nonumber \\
+  && = \sum_{j < k}(U_{2j}U_{3k} - U_{3j}U_{2k})a_j b_k + \sum_{j > k}(U_{2j}U_{3k} - U_{3j}U_{2k})a_j b_k \nonumber \\
+  && = \sum_{j < k}(U_{2j}U_{3k} - U_{3j}U_{2k})a_j b_k + \sum_{j < k}(U_{2k}U_{3j} - U_{3k}U_{2j})a_k b_j \nonumber \\
+  && = \sum_{j < k}(U_{2j}U_{3k} - U_{3j}U_{2k})(a_j b_k - a_k b_j)
+\end{eqnarray}
+2回目の式変形は, 第一項と第二項で, 和をとるインデックスが独立しているため, $j \leftrightarrow k$の文字を置き換えただけである. 
+ここで, $a_j b_k - a_k b_j$に注目すると, $j < k$の条件において, これは$\mbold{a} \times \mbold{b}$の一成分を表しており, 
+和の条件である, $(j, k) = (2, 3), (1, 3), (1, 2)$において, それぞれ, $x$成分, $y$成分, $z$成分となっていることがわかる.
+
+一方で, $U_{2j}U_{3k} - U_{3j}U_{2k}$に注目すると, $(U_{21}, U_{22}, U_{23})$が, $U$の, 2行目の行ベクトルであることを考慮すると, $j < k$の条件において, 同様の議論により, 2行目の行ベクトルと, 3行目の行ベクトルの外積の, 一成分であり, $(j, k)$に関する構造が, $a$, $b$と同じ形であることから, ある$j, k$において, 同一成分同士の積となっている. 
+したがって, $(j, k) = (2, 3)$は, 外積成分について$1$と読み替えることができ, 和のインデックスを, 外積成分のインデックスと読み替えれば, 
+\begin{equation}
+  \sum_{j < k}(U_{2j}U_{3k} - U_{3j}U_{2k})(a_j b_k - a_k b_j)
+  = \sum_{i} (\mbold{U}_2 \times \mbold{U}_3)_i (\mbold{a} \times \mbold{b})_i
+\end{equation}
+$U$の行ベクトルは, $\transp{U}$における列ベクトルである. 
+$U$は直交変換行列であるから, $U^{-1} = \transp{U}$も直交変換行列である. 
+したがって, $\transp{U}$の列ベクトルは, 直交座標系の基底ベクトルであり, すなわち, $U$の行ベクトルが直交座標系の基底ベクトルであることと同値である. 
+直交行列の列ベクトルは, $\Sigma_o^\prime$の基底ベクトルの, $\Sigma_o$系での成分表示である.  
+\url{https://www.mynote-jp.com/entry/Properties-of-the-Cross-Product} 
+によれば, 3本の基底ベクトルは, 右手系, 左手系に応じて, 符号の差はあれど, 外積の関係にある, ということを利用すると, 
+\[
+  \mbold{U}_2 \times \mbold{U}_3 = (\det U) \mbold{U}_1
+\]
+以上の議論から, 
+\begin{equation}
+  (U\mbold{a} \times U\mbold{b})_1 = (\det U)\mbold{U}_1 \cdot (\mbold{a} \times \mbold{b})
+\end{equation}
+となり, 同様の議論を, $y$, $z$成分についても実行すると,
+\begin{equation}
+  U\mbold{a} \times U\mbold{b} = (\det U) U (\mbold{a} \times \mbold{b})
+\end{equation}
+行列式の符号は, 右手系, 左手系を変化させるような鏡面変換を含むような$U$の場合は, $-1$, 回転のみで表現できる場合は, $1$であり, 式(\ref{eq-3})は, 回転変換のときのみ, という制約のもとで成立する. 
+この補題は, 外積演算が, 完全なるベクトルとは言えない, 擬ベクトル(軸性ベクトル)であることを示している. 
+
+\section{本証明}
+Theorem1.14の定義を使用する. すなわち, 
+\begin{subequations}
+  \begin{eqnarray}
+    W_{ij} = \frac{\partial A_i^\prime}{\partial x_j^\prime} \\
+    V_{ij} = \frac{\partial A_i}{\partial x_j}
+  \end{eqnarray}
+\end{subequations}
+$\rot$の定義によれば, 
+\begin{equation}\label{eq-10}
+  (\rot \mbold{A}^\prime)_i = W_{jk} - W_{kj}, 
+  ~~ (i, j, k) = (1, 2, 3), (2, 3, 1), (3, 1, 2)
+\end{equation}
+となる. Theorem1.14において, 
+\begin{equation}
+  W = UV\transp{U}
+\end{equation}
+が示されたので, 式(\ref{eq-10})に適用すると, 
+\begin{equation}
+  (\rot \mbold{A}^\prime)_i = W_{jk} - W_{kj} = W_{jk} - (\transp{W})_{jk}
+  = (UV\transp{U})_{jk} - \transp(UV\transp{U})_{jk}
+\end{equation}
+右辺第二項に行列の転置の性質を適用すると, 
+\begin{eqnarray}
+  && \transp(UV\transp{U}) \nonumber \\
+  && = \transp(V\transp{U})\transp{U} \nonumber \\
+  && = U\transp{V}\transp{U}
+\end{eqnarray}
+なので, 
+\begin{equation}
+  (\rot \mbold{A}^\prime)_i = (U(V - \transp{V})\transp{U})_{jk}
+\end{equation}
+個別の成分で表示すると, 
+\begin{eqnarray}
+  && (U(V - \transp{V})\transp{U})_{jk} \nonumber \\
+  && = \sum_l U_{jl} \sum_m (V_{lm} - \transp{V}_{lm})(\transp{U})_{mk} \nonumber \\
+  && = \sum_{l, m} U_{jl}U_{km} (V_{lm} - V_{ml})
+\end{eqnarray}
+補題の, 式(\ref{eq-6})と同様の式変形を行う, すなわち, $l > m$のケースと, $l < m$のケースに分けたあとで再統合すると, 
+\begin{eqnarray}\label{eq-18}
+  && \sum_{l, m} U_{jl}U_{km} (V_{lm} - V_{ml}) \nonumber \\
+  && = \sum_{l < m} (U_{jl}U_{km} - U_{jm}U_{kl})(V_{lm} - V_{ml})
+\end{eqnarray}
+
+この式は, 補題の, 式(\ref{eq-7})と構図がほぼ同じであり, $a_j b_k$と, $V_{lm}$が対応している. 
+一方で, 
+\begin{equation}
+  (\rot \mbold{A})_i = V_{lm} - V_{ml}, 
+  ~~ (i, l, m) = (1, 2, 3), (2, 3, 1), (3, 1, 2)
+\end{equation}
+なので, $a_j b_k$を, $\mbold{a} \times \mbold{b}$の$i$成分であると読み替えたときと全く同様の操作ができ, 
+式(\ref{eq-18})は, 
+\begin{eqnarray}\label{eq-18}
+  && \sum_{l < m} (U_{jl}U_{km} - U_{jm}U_{kl})(V_{lm} - V_{ml}) \nonumber \\
+  && = \sum_n (\mbold{U}_j \times \mbold{U}_k)_n (\rot\mbold{A})_n \nonumber \\
+  && = \sum_n (\det U)(\mbold{U}_i)_n (\rot\mbold{A})_n \nonumber \\
+  && = (\det U)\mbold{U}_i \cdot \rot\mbold{A}
+\end{eqnarray}
+となる. $i$を, $x$, $y$, $z$について縦に並べれば, 
+\begin{equation}
+  \rot\mbold{A}^\prime = (\det U)U\rot\mbold{A}
+\end{equation}
+$\rot$も, 完全なるベクトルではなく, 鏡面変換により対称性が崩れる, 擬ベクトルであり, 回転変換という前提において, ベクトルとして振る舞う. 
+
+
+\end{document}

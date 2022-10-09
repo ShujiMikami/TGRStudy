@@ -1,0 +1,49 @@
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+
+\title{追加質問}
+
+\begin{document}
+\maketitle
+\section{陰関数表示できるときの媒介変数表示可能性について, の回答に対する質問}
+陰関数定理と, $x(t) \equiv t$, $y(t) \equiv \phi(t)$ とすることで, $C^1$級の$x(t)$, $y(t)$が存在することの証明はスッキリと理解できました. 
+この選び方に関する理解を確認させてください. 
+例えば, $f(x, y) = x^2 + y^2$に対し, $f(x, y) = 1$を満たす$x(t)$, $y(t)$は, 多くの場合, 
+\begin{subequations}
+  \begin{eqnarray}
+    x(t) \equiv \cos t \\
+    y(t) \equiv \sin t
+  \end{eqnarray}
+\end{subequations}
+と定めることが多いが, この$x(t)$は, $t$が属する集合$U = \mathbb{R}$から, $x$が属する集合$V = [-1, 1]$に対する, 
+全射(単射はいらないと思うがあってるのかな)という条件さえ満たしていれば自由に取ることができ, 
+したがって, $C^1$級の全射を選びさえすれば, $x(t)$は, 当然$C^1$級になり, 
+$y(t)$も, 陰関数定理により, $y(x)$が$C^1$級であり, $x(t)$が$C^1$級であることにより, 微分の連鎖率から, $C^1$級になる. 
+
+以上をまとめると, 
+$C^1$級の$f(x, y)$の等高線上の点$(x, y)$は, 少なくとも$x(t) = t$, $y(t) = y(x(t))$とすることで, $C^1$級の関数により媒介変数表示ができ, 
+さらに, $t \in U \to V \ni x$の全射のうち, $C^1$級のものを作れたなら, どの関数でも, 媒介変数表示が可能である, と理解しましたがどうでしょう?
+
+\section{陰関数定理の前提が満たされない場合の解釈について, の回答に対する追加質問}
+陰関数定理の議論から言えることは, 
+勾配ベクトルが$\mbold{0}$ではないなら, 等高線と勾配ベクトルは直交する, という十分条件として結ばれた関係であり, 
+それを否定した, 勾配ベクトルが, $\mbold{0}$であることは, 等高線と勾配ベクトルが直交することを否定することにはならない. 
+例にあげた, $f(x, y) = x^3$については, あくまで, 陰関数定理を利用した証明方法では証明ができない例外なだけであって, 
+図形的なアプローチや, テイラー展開の利用など, 様々な別の手法で証明されればよい, 証明テクニックそのものに対する例外である, と理解しました. 
+よって, 勾配が$\mbold{0}$でも, 等高線が曲線として存在するならば, 必ず勾配ベクトルと等高線は直交するのである, と言えるということでいいでしょうか?
+
+\end{document}
