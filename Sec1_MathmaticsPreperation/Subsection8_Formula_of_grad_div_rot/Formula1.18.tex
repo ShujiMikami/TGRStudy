@@ -1,0 +1,45 @@
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+%\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+\newcommand*{\divg}{{\rm div}}
+\newcommand*{\rot}{{\rm rot}}
+\newcommand*{\trace}[1]{{\rm tr}\!{#1}}
+
+
+\title{Formula1.18}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  \begin{equation}
+    \divg(f(\mbold{x})\mbold{A}(\mbold{x})) = 
+    f(x)\divg\mbold{A}(\mbold{x}) + \grad f(\mbold{x}) \cdot \mbold{A}(\mbold{x})
+  \end{equation}
+\end{abstract}
+
+\section*{証明}
+定義通り計算するだけ. 関数の引数は省略する. 
+\begin{eqnarray}
+  && \divg(f\mbold{A}) \nonumber \\
+  && = \sum_i \frac{\partial (f A_i)}{\partial x_i} \nonumber \\
+  && = \sum_i (\frac{\partial f}{\partial x_i} A_i + f \frac{\partial A_i}{\partial x_i}) \nonumber \\
+  && = \sum_i (\grad f)_i A_i + f \divg\mbold{A} \nonumber \\
+  && = \grad f \cdot \mbold{A} + f \divg\mbold{A}
+\end{eqnarray}
+
+
+\end{document}
