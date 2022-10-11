@@ -1,0 +1,47 @@
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+%\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+\newcommand*{\divg}{{\rm div}}
+\newcommand*{\rot}{{\rm rot}}
+\newcommand*{\trace}[1]{{\rm tr}\!{#1}}
+
+
+\title{Formula1.20}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  \begin{equation}
+    \divg(\mbold{A}(\mbold{x}) \times \mbold{B}(\mbold{x})) = \mbold{B}(\mbold{x}) \cdot \rot \mbold{A}(\mbold{x}) - \mbold{A}(\mbold{x}) \cdot \rot\mbold{B}(\mbold{x})
+  \end{equation}
+\end{abstract}
+
+\section*{本証明}
+Formula1.19のlemmaを利用し, 成分計算する. 引数は省略する. 
+
+\begin{eqnarray}
+  && \divg(\mbold{A} \times \mbold{B}) \nonumber \\
+  && = \sum_i \frac{\partial}{\partial x_i}\sum_{ijk}\epsilon_{ijk}A_j B_k \nonumber \\
+  && = \sum_{i, j, k}\epsilon_{ijk} \left( B_k \frac{\partial A_j}{\partial x_i} + A_j \frac{\partial B_k}{\partial x_i} \right) \nonumber \\
+  && = \sum_k B_k \sum_{i, j} \epsilon_{kij} \frac{\partial A_j}{\partial x_i} + \sum_j A_j \sum_{i, k}(-\epsilon_{jik})\frac{\partial B_k}{\partial x_i} \nonumber \\
+  && = \sum_k B_k (\rot\mbold{A})_k - \sum_j A_j (\rot\mbold{B})_j \nonumber \\
+  && = \mbold{B} \cdot \rot\mbold{A} - \mbold{A} \cdot \mbold{B}
+\end{eqnarray}
+3行目では, 偏微分のライプニッツ則, 4行目では, Formula1.19のlemmaの4番目と5番目の式を使い, 添え字を入れ替えている. 
+
+
+\end{document}
