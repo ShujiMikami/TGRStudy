@@ -1,0 +1,46 @@
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+%\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+\newcommand*{\divg}{{\rm div}}
+\newcommand*{\rot}{{\rm rot}}
+\newcommand*{\trace}[1]{{\rm tr}\!{#1}}
+
+
+\title{Formula1.22}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  \begin{equation}
+    \divg\rot \mbold{A}(\mbold{x}) = 0
+  \end{equation}
+\end{abstract}
+
+\section*{本証明}
+Formula1.19のlemmaを利用し, 成分計算する. 引数は省略する. 
+
+\begin{eqnarray}
+  && \divg \rot \mbold{A} \nonumber \\
+  && = \sum_i \frac{\partial}{\partial x_i} \sum_{j, k}\epsilon_{ijk}\frac{\partial A_k}{\partial x_j} \nonumber \\
+  && = \frac{1}{2} \sum_k \left( \sum_{i, j} \epsilon_{ijk}\frac{\partial^2 A_k}{\partial x_i \partial x_j} + \sum_{i, j} \epsilon_{jik}\frac{\partial^2 A_k}{\partial x_j \partial x_i}\right)\nonumber \\
+  && = \frac{1}{2} \sum_k \left( \sum_{i, j} \epsilon_{ijk}\frac{\partial^2 A_k}{\partial x_i \partial x_j} + \sum_{j, k} (-\epsilon_{ijk})\frac{\partial^2 A_k}{\partial x_j \partial x_i}\right) \nonumber \\
+  && = 0
+\end{eqnarray}
+やっていることは, Formula1.21とほぼ同じ. 
+
+
+\end{document}

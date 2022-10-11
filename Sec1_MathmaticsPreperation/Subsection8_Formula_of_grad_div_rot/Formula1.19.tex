@@ -1,0 +1,119 @@
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+%\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+\newcommand*{\divg}{{\rm div}}
+\newcommand*{\rot}{{\rm rot}}
+\newcommand*{\trace}[1]{{\rm tr}\!{#1}}
+
+
+\title{Formula1.19}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  \begin{equation}
+    \rot\rot\mbold{A}(\mbold{x}) = \grad \divg \mbold{A}(\mbold{x}) - \varDelta \mbold{A}(\mbold{x})
+  \end{equation}
+  ただし, $\varDelta \mbold{A}(\mbold{x}) = (\varDelta A_x(\mbold{x}), \varDelta A_y(\mbold{x}),\varDelta A_z(\mbold{x}))$
+\end{abstract}
+
+\section{lemma}
+エディントンのエプシロンを, 以下のように定義する. 
+\begin{equation}
+  \epsilon_{ijk} = 
+    \begin{cases}
+      1 & (i, j, k) = (1, 2, 3), (2, 3, 1), (3, 1, 2) \\
+      -1 & (i, j, k) = (1, 3, 2), (2, 1, 3), (3, 2, 1) \\
+      0 & (otherwise)
+    \end{cases}
+\end{equation}
+外積が, 
+\begin{equation}
+  (\mbold{a} \times \mbold{b})_i = \sum_{j, k}\epsilon_{ijk}a_j b_k
+\end{equation}
+$\rot$が, 
+\begin{equation}
+  (\rot\mbold{A}(\mbold{x}))_i = \sum_{j, k}\epsilon_{ijk}\frac{\partial A_k}{\partial x_j}
+\end{equation}
+となる. 
+\subsection{証明}
+成分ごとに計算する. 
+\begin{eqnarray}
+  \sum_{j, k}\epsilon_{1jk}a_j b_k = \epsilon_{123}a_2 b_3 + \epsilon_{132}a_3 b_2 = a_2 b_3 - a_3 b_2 = (\mbold{a} \times \mbold{b})_1 \nonumber \\
+  \sum_{j, k}\epsilon_{2jk}a_j b_k = \epsilon_{231}a_3 b_1 + \epsilon_{213}a_1 b_3 = a_3 b_1 - a_1 b_3 = (\mbold{a} \times \mbold{b})_2 \nonumber \\
+  \sum_{j, k}\epsilon_{3jk}a_j b_k = \epsilon_{312}a_1 b_2 + \epsilon_{321}a_2 b_1 = a_1 b_2 - a_2 b_1 = (\mbold{a} \times \mbold{b})_3
+\end{eqnarray}
+同様に, 
+\begin{eqnarray}
+  \sum_{j, k}\epsilon_{1jk}\frac{\partial A_k}{\partial x_j}
+  = \epsilon_{123}\frac{\partial A_3}{\partial x_2} + \epsilon_{132}\frac{\partial A_2}{\partial x_3}
+  = \frac{\partial A_3}{\partial x_2} - \frac{\partial A_2}{\partial x_3} = (\rot \mbold{A})_1 \nonumber \\
+  \sum_{j, k}\epsilon_{2jk}\frac{\partial A_k}{\partial x_j}
+  = \epsilon_{231}\frac{\partial A_1}{\partial x_3} + \epsilon_{213}\frac{\partial A_3}{\partial x_1}
+  = \frac{\partial A_3}{\partial x_2} - \frac{\partial A_2}{\partial x_3} = (\rot \mbold{A})_2 \nonumber \\
+  \sum_{j, k}\epsilon_{3jk}\frac{\partial A_k}{\partial x_j}
+  = \epsilon_{312}\frac{\partial A_2}{\partial x_1} + \epsilon_{321}\frac{\partial A_1}{\partial x_2}
+  = \frac{\partial A_2}{\partial x_1} - \frac{\partial A_1}{\partial x_2} = (\rot \mbold{A})_3 \nonumber \\
+\end{eqnarray}
+これはつまり, ナブラの各成分が, あたかもベクトルの成分であるかのように, 計算を行って良いことを示している. 
+\section{lemma}
+エディントンのエプシロンに対し, 
+\begin{subequations}
+  \begin{eqnarray}
+    && \sum_{i, j, k}\epsilon_{ijk}^2 = 6 \\
+    && \sum_{k, m}\epsilon_{ikm}\epsilon_{jkm} = 2\delta_{ij} \\
+    && \sum_{i}\epsilon_{ijk}\epsilon_{ilm} = \delta_{jl}\delta_{km} - \delta_{jm}\delta_{kl} \\
+    && \epsilon_{ijk} = - \epsilon_{ikj} \\
+    && \epsilon_{ijk} = \epsilon_{kij}
+  \end{eqnarray}
+\end{subequations}
+\subsection{証明}
+非自明なパターンは, 6つのみで, 大きさが$1$なので, 1つ目は自明. 
+
+2つ目の式は, 定義の中で, $\epsilon$が非自明な値を取る, $k$, $m$が共通する複数パターンがないことから, 
+$i = j$の項しか残らない. 
+また, $i = j$のときは, ある固定された$i$に対し, 非自明な値を取るパターンは, $1$と$-1$の2パターンしかないことから, 
+加算した結果は$2$. 
+よって, 式が成り立つ. 
+
+3つめの式は, 定義より, 任意の$i$に対し, 非自明な値を取る$(j, k)$, および$(l, m)$のパターンは二つしかなく, 
+従って, 
+$\epsilon_{ijk}\epsilon_{ilm} \neq 0$が両立するには, その$j, k$の組と, $l, m$の組が, 二つのどちらかを取るしかなくなる. 
+このとき, $(j, k)$の組と, $(l, m)$の組が, 異なる組だった場合は, $\epsilon$の符号が逆になるので, $\epsilon_{ijk}\epsilon_{ilm} = -1$となり, 
+同じ組だった場合は, 当然$\epsilon_{ijk}\epsilon_{ilm} = 1$となる. 
+さらに, 符号が反転する組み同士では, $(j, k)$の組み合わせが, 反転しているので, $(j, k) = (m, l)$となる. 
+以上をまとめると, $(i, j) = (l, m)$のとき, 1を取り, $(i, j) = (m, l)$のとき, -1を取る, という性質があり, 
+これは$\delta_{il}\delta_{jm} - \delta_{im}\delta_{jl}$に他ならない. 
+
+4つめ, 5つめの式は, 各項目を比べれば明らか. 
+
+\section*{本証明}
+定義通り計算するだけ. 関数の引数は省略する. 
+lemmaを利用すると, 
+\begin{eqnarray}
+  && (\rot\rot\mbold{A})_i \nonumber \\
+  && = \sum_{j, k}\epsilon_{ijk}\frac{\partial}{\partial x_j} \left(\sum_{l, m}\epsilon_{klm}\frac{\partial A_m}{\partial x_l}\right) \nonumber \\
+  && = \sum_{j, k, l, m}\epsilon_{ijk}\epsilon_{klm}\frac{\partial^2 A_m}{\partial x_j \partial x_l} \nonumber \\
+  && = \sum_{j, k, l, m}\epsilon_{kij}\epsilon_{klm}\frac{\partial^2 A_m}{\partial x_j \partial x_l} \nonumber \\
+  && = \sum_{j, l, m}(\delta_{il}\delta_{jm} - \delta_{im}\delta_{jl})\frac{\partial^2 A_m}{\partial x_j \partial x_l} \nonumber \\
+  && = \sum_{j, l}\delta{il}\frac{\partial^2 A_j}{\partial x_j \partial x_l} - \sum_{j, l}\delta_{jl}\frac{\partial^2 A_i}{\partial x_j \partial x_l}\nonumber \\
+  && = \frac{\partial}{\partial x_i}\sum_j\frac{\partial A_j}{\partial x_j} - \sum_j \frac{\partial^2 A_i}{\partial x_j^2} \nonumber \\
+  && = (\grad \divg\mbold{A})_i - (\varDelta \mbold{A})_i
+\end{eqnarray}
+3行目では, lemmaの5番目を使用し, 4行目では, $k$で和を取ることで, 3番目を使用した.
+
+\end{document}
