@@ -76,26 +76,44 @@ $\rot$が,
   \begin{eqnarray}
     && \sum_{i, j, k}\epsilon_{ijk}^2 = 6 \\
     && \sum_{k, m}\epsilon_{ikm}\epsilon_{jkm} = 2\delta_{ij} \\
-    && \sum_{i}\epsilon_{ijk}\epsilon_{ilm} = \delta_{jl}\delta_{km} - \delta_{jm}\delta_{kl}
+    && \sum_{i}\epsilon_{ijk}\epsilon_{ilm} = \delta_{jl}\delta_{km} - \delta_{jm}\delta_{kl} \\
+    && \epsilon_{ijk} = - \epsilon_{ikj} \\
+    && \epsilon_{ijk} = \epsilon_{kij}
   \end{eqnarray}
 \end{subequations}
 \subsection{証明}
 非自明なパターンは, 6つのみで, 大きさが$1$なので, 1つ目は自明. 
+
 2つ目の式は, 定義の中で, $\epsilon$が非自明な値を取る, $k$, $m$が共通する複数パターンがないことから, 
 $i = j$の項しか残らない. 
 また, $i = j$のときは, ある固定された$i$に対し, 非自明な値を取るパターンは, $1$と$-1$の2パターンしかないことから, 
 加算した結果は$2$. 
 よって, 式が成り立つ. 
 
+3つめの式は, 定義より, 任意の$i$に対し, 非自明な値を取る$(j, k)$, および$(l, m)$のパターンは二つしかなく, 
+従って, 
+$\epsilon_{ijk}\epsilon_{ilm} \neq 0$が両立するには, その$j, k$の組と, $l, m$の組が, 二つのどちらかを取るしかなくなる. 
+このとき, $(j, k)$の組と, $(l, m)$の組が, 異なる組だった場合は, $\epsilon$の符号が逆になるので, $\epsilon_{ijk}\epsilon_{ilm} = -1$となり, 
+同じ組だった場合は, 当然$\epsilon_{ijk}\epsilon_{ilm} = 1$となる. 
+さらに, 符号が反転する組み同士では, $(j, k)$の組み合わせが, 反転しているので, $(j, k) = (m, l)$となる. 
+以上をまとめると, $(i, j) = (l, m)$のとき, 1を取り, $(i, j) = (m, l)$のとき, -1を取る, という性質があり, 
+これは$\delta_{il}\delta_{jm} - \delta_{im}\delta_{jl}$に他ならない. 
+
+4つめ, 5つめの式は, 各項目を比べれば明らか. 
+
 \section*{本証明}
 定義通り計算するだけ. 関数の引数は省略する. 
+lemmaを利用すると, 
 \begin{eqnarray}
   && (\rot\rot\mbold{A})_i \nonumber \\
-  && = \rot \nonumber \\
-  && = \sum_i (\frac{\partial f}{\partial x_i} A_i + f \frac{\partial A_i}{\partial x_i}) \nonumber \\
-  && = \sum_i (\grad f)_i A_i + f \divg\mbold{A} \nonumber \\
-  && = \grad f \cdot \mbold{A} + f \divg\mbold{A}
+  && = \sum_{j, k}\epsilon_{ijk}\frac{\partial}{\partial x_j} \left(\sum_{l, m}\epsilon_{klm}\frac{\partial A_m}{\partial x_l}\right) \nonumber \\
+  && = \sum_{j, k, l, m}\epsilon_{ijk}\epsilon_{klm}\frac{\partial^2 A_m}{\partial x_j \partial x_l} \nonumber \\
+  && = \sum_{j, k, l, m}\epsilon_{kij}\epsilon_{klm}\frac{\partial^2 A_m}{\partial x_j \partial x_l} \nonumber \\
+  && = \sum_{j, l, m}(\delta_{il}\delta_{jm} - \delta_{im}\delta_{jl})\frac{\partial^2 A_m}{\partial x_j \partial x_l} \nonumber \\
+  && = \sum_{j, l}\delta{il}\frac{\partial^2 A_j}{\partial x_j \partial x_l} - \sum_{j, l}\delta_{jl}\frac{\partial^2 A_i}{\partial x_j \partial x_l}\nonumber \\
+  && = \frac{\partial}{\partial x_i}\sum_j\frac{\partial A_j}{\partial x_j} - \sum_j \frac{\partial^2 A_i}{\partial x_j^2} \nonumber \\
+  && = (\grad \divg\mbold{A})_i - (\varDelta \mbold{A})_i
 \end{eqnarray}
-
+3行目では, lemmaの5番目を使用し, 4行目では, $k$で和を取ることで, 3番目を使用した.
 
 \end{document}
