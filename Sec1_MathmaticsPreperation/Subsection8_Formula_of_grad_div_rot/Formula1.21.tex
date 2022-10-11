@@ -1,0 +1,51 @@
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+%\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+\newcommand*{\divg}{{\rm div}}
+\newcommand*{\rot}{{\rm rot}}
+\newcommand*{\trace}[1]{{\rm tr}\!{#1}}
+
+
+\title{Formula1.21}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  \begin{equation}
+    \rot\grad f(\mbold{x}) = \mbold{0}
+  \end{equation}
+\end{abstract}
+
+\section*{本証明}
+Formula1.19のlemmaを利用し, 成分計算する. 引数は省略する. 
+完全反対称と, 対称の積ゆえ, 当たり前だが, あえて計算する. 
+
+\begin{eqnarray}
+  && (\rot \grad f)_i \nonumber \\
+  && = \sum_{j, k} \epsilon_{ijk}\frac{\partial}{\partial x_j}\frac{\partial f}{\partial x_k} \nonumber \\
+  && = \frac{1}{2} \left( \sum_{j, k} \epsilon_{ijk}\frac{\partial}{\partial x_j}\frac{\partial f}{\partial x_k} + \sum_{j, k} \epsilon_{ikj}\frac{\partial}{\partial x_k}\frac{\partial f}{\partial x_j}\right)\nonumber \\
+  && = \frac{1}{2} \left( \sum_{j, k} \epsilon_{ijk}\frac{\partial}{\partial x_j}\frac{\partial f}{\partial x_k} + \sum_{j, k} (-\epsilon_{ijk})\frac{\partial}{\partial x_j}\frac{\partial f}{\partial x_k}\right)\nonumber \\
+  && = \mbold{0}
+\end{eqnarray}
+3行目では, 全く同じものを, $j, k$の文字を入れ替えただけのもので表現し, それとの和の半分, という表現をしている. 
+4行目では, Formula1.19のlemmaの5番目の式を使い, 添え字を入れ替えている. 
+しれっと, 偏微分の順序を入れ替えているが, これができる条件として, 
+$f_{xy}$, $f_{yx}$がともに存在し, 連続である, という要請が暗にされている. 
+\url{https://manabitimes.jp/math/1174}が詳しい. 
+
+
+\end{document}
