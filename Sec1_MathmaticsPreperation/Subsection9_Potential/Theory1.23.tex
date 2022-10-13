@@ -1,0 +1,61 @@
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+%\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+\newcommand*{\divg}{{\rm div}}
+\newcommand*{\rot}{{\rm rot}}
+\newcommand*{\trace}[1]{{\rm tr}\!{#1}}
+
+
+\title{Theory1.23}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  ベクトル場$\mbold{A}(\mbold{x})$が, 直方体の領域$R$全体で, $\rot \mbold{A}(\mbold{x}) = \mbold{0}$を満たすとき, スカラー場$f(\mbold{x})$が存在し, 
+  $\mbold{A}(\mbold{x}) = - \grad f(\mbold{x})$と表される. 
+  $f(\mbold{x})$をスカラーポテンシャルと呼ぶ
+\end{abstract}
+
+\section*{本証明}
+スカラーポテンシャル$\phi$が存在するという状況, すなわち, 
+\begin{equation}
+  \mbold{A} = \nabla\phi
+\end{equation}
+が成立するとは, すなわち, $\grad$の逆演算を$\mbold{A}$に施した結果が値を持つこと, と読み替えられる. 
+その演算は, 線積分であり, 次の章で学ぶ内容である. 
+ここでは, それを前提にした, 天下り的な定義を行う. 
+
+関数$\phi$を以下のように定義する. 
+\begin{equation}
+  \phi = \int_{x_0}^x A_x(t, y_0, z_0)dt + \int_{y_0}^y A_y(x, t, z_0)dt + \int_{z_0}^z A_z(x, y, t)dt
+\end{equation}
+
+$x$で偏微分すると, 
+\begin{eqnarray}
+  && \frac{\partial \phi}{\partial x} \nonumber \\
+  && = \frac{\partial}{\partial x}\int_{x_0}^x A_x(t, y_0, z_0)dt + \int_{y_0}^y \frac{\partial A_y}{\partial x}(x, t, z_0)dt + \int_{z_0}^z \frac{\partial A_z}{\partial x}(x, y, z)dz \nonumber \\
+  && = A_x(x, y_0, z_0) + \int_{y_0}^y \frac{\partial A_x}{\partial y}(x, t, z_0)dt + \int_{z_0}^z \frac{\partial A_x}{\partial z}(x, y, t)dt \nonumber \\
+  && = A_x(x, y_0, z_0) + [A_x]^{(x, y, z_0)}_{(x, y_0, z_0)} + [A_x]^{(x, y, z)}_{(x, y, z_0)} \nonumber\\
+  && = A_x(x, y, z)
+\end{eqnarray}
+2行目では, 積分に関係ない変数の微分と積分の順序を交換し, 3行目では, $\nabla \times \mbold{A} = \mbold{0}$を利用した. 
+これを同様に$y$, $z$軸についても実施すれば, $\nabla \phi = \mbold{A}$が示せる. 
+
+なお, この積分は, $\mbold{A}$を, $R$内の点$(x_0, y_0, z_0)$から, $(x, y, z)$に向かって, $x$軸と平行に進み, $y$軸と平行に進み, 最後$z$軸と平行に進む経路を選び, 線積分したものである. 
+後に, $\nabla \times \mbold{A}$を満たすベクトル場は, 線積分の値が, 経路に依存しない, ということを示せる.
+
+\end{document}
