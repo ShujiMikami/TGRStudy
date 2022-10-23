@@ -46,10 +46,10 @@
 \end{subequations}
 としてみる. これに対し, $\rot$を計算してみると, 
 \begin{eqnarray}\label{eq-3}
-  && \frac{\partial B_y}{\partial x} - \frac{\partial B_x}{\partial y} \nonumber \\
+  && (\rot\mbold{B})_z = \frac{\partial B_y}{\partial x} - \frac{\partial B_x}{\partial y} \nonumber \\
   && = \frac{\partial}{\partial x}\int_{z_0}^z A_x dz - A_z 
     - A_z + \frac{\partial}{\partial y}\int_{z_0}^z A_y dz \nonumber \\
-  && = -2 A_z + \int_{z_0}^z \left(\frac{\partial A_x}{\partial x} + \frac{\partial A_y}{\partial y}\right)dt
+  && = -2 A_z + \int_{z_0}^z \left(\frac{\partial A_x}{\partial x} + \frac{\partial A_y}{\partial y}\right)dz 
 \end{eqnarray}
 $\divg\mbold{A} = 0$によれば, 
 \[
@@ -57,10 +57,26 @@ $\divg\mbold{A} = 0$によれば,
 \]
 なので, 式(\ref{eq-3})は, 積分の自由度を無視すると,  
 \begin{equation}
-  \frac{\partial B_y}{\partial x} - \frac{\partial B_x}{\partial y}
+  (\rot\mbold{B})_z = \frac{\partial B_y}{\partial x} - \frac{\partial B_x}{\partial y}
   = -3 A_z
 \end{equation}
-同様に, $y$, $z$軸も計算すれば, 
+同様に, $x$, $y$成分も計算すれば, 以下のように,  
+\begin{eqnarray*}
+  && (\rot\mbold{B})_x = \frac{\partial B_z}{\partial y} - \frac{\partial B_y}{\partial z} \nonumber \\
+  && = \frac{\partial}{\partial y}\int_{x_0}^x A_y dx - A_x 
+    - A_x + \frac{\partial}{\partial z}\int_{x_0}^x A_z dx \nonumber \\
+  && = -2 A_x + \int_{x_0}^x \left(\frac{\partial A_y}{\partial y} + \frac{\partial A_z}{\partial z}\right)dx \nonumber \\
+  && = -3 A_x
+\end{eqnarray*}
+
+\begin{eqnarray*}
+  && (\rot\mbold{B})_y = \frac{\partial B_x}{\partial z} - \frac{\partial B_z}{\partial x} \nonumber \\
+  && = \frac{\partial}{\partial z}\int_{y_0}^y A_z dy - A_y 
+    - A_y + \frac{\partial}{\partial x}\int_{y_0}^y A_x dy \nonumber \\
+  && = -2 A_y + \int_{y_0}^y \left(\frac{\partial A_x}{\partial x} + \frac{\partial A_z}{\partial z}\right)dy \nonumber \\
+  && = -3 A_y
+\end{eqnarray*}
+
 係数$-3$がかかっているが, $\rot\mbold{B} = \mbold{A}$の関係になっている. 
 よって, そもそもの定義が, 
 \begin{subequations}
