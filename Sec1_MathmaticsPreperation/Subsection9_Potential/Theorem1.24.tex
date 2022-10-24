@@ -30,7 +30,7 @@
 
 \section*{本証明}
 ベクトルポテンシャル$\mbold{B}$が存在するという状況, すなわち, 
-\begin{equation}
+\begin{equation}\label{eq-2}
   \mbold{A} = \rot\mbold{B}
 \end{equation}
 が成立するとは, すなわち, $\rot$の逆演算を$\mbold{A}$に施した結果が値を持つこと, と読み替えられる. 
@@ -88,4 +88,9 @@ $\divg\mbold{A} = 0$によれば,
 \end{subequations}
 であったなら, 成立している. 
 よって, ベクトルポテンシャルの存在は証明できた. 
+
+ちなみに, 式(\ref{eq-2})は, 1階の微分方程式のため, ベクトルポテンシャル$\mbold{B}$は, 積分の不定性がある. 
+Formula1.21により, $\rot\grad\chi = \mbold{0}$なので, 求めたある一つの$\mbold{B}$に対し, $\grad\chi$を足した物は全て, ベクトルポテンシャルとしての要件を満たし, 
+ここで求めたポテンシャルと, 教科書で示された解が異なることは, いわゆるゲージ不変性として理解される. 
+
 \end{document}
