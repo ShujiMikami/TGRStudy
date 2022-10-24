@@ -1,6 +1,7 @@
 \documentclass{jsarticle}
 \usepackage[dvipdfmx]{graphicx}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{color}
 \usepackage{colortbl}
 \usepackage{arydshln}
@@ -29,53 +30,58 @@
 
 \section*{lemma}
 等高線とは, $f(x, y)$が一定値$z_0$を取る, $(x, y)$の集合に対し, $(x, y, z_0)$が描く曲線のことである. 
-ある$z_0$が与えられたとき, $f(x, y)$が$C^1$級であるならば, $C^1$級の関数により, 
+ある$z_0$が与えられたとき, $f(x, y)$が$C^1$級であり, かつ, $f$の勾配がゼロベクトルでないならば, $C^1$級の関数により, 
 \begin{subequations}
   \begin{eqnarray}
-    x = x(t) \\
-    y = y(t)
+    x = \phi(t) \\
+    y = \psi(t)
   \end{eqnarray}
 \end{subequations}
 と表すことができる. 
 
+\subsection*{証明}
+勾配がゼロベクトルではない条件を, $\partial f / \partial x \neq 0$か, $\partial f / \partial y \neq 0$のうち, 少なくともどちらかが成立する, と読み替える. 同じことである. 
+まずは, $\partial f / \partial y \neq 0$とする. 
+このとき, 陰関数定理により, $f(x, y) = f(x, \psi(x))$なる, $\psi(x)$が存在する. 
+シンプルに, $x = \phi(t) \equiv t$とすれば, $y = \psi(\phi(t)) = \psi(t)$となり, 存在の証明はされた. 
+
+もう少し拡張性をもった言い方をすれば, 等高線上の$x$を全て含む集合$V \subset \mathbb{R}$に対し, 
+$C^1$級の関数で定義される全射$\phi : \mathbb{R} \rightarrow V$を定義したらならば, 
+陰関数定理により, $C^1$級の$\psi$が存在し, $y = \psi(\phi(t))$であり, 微分の連鎖率から, $\psi(\phi(t)) \equiv \Psi(t)$も$C^1$級である. 
+
+この議論は, $\partial f / \partial x \neq 0$の場合と対称であり, 同様に成立する. 
+従って, 少なくとも一つのパラメータ表示の存在が証明され, それ以外にも, $C^1$級のパラメータ表示が$x$について見つかったならば, $y$も$C^1$級のパラメータ表示関数が存在する. 
+
 \section*{本証明}
 \subsection*{"$\grad f$は等高線と直交"の証明}
-\[
-  F(x, y) \equiv f(x, y) - z_0
-\]
-とすると, 
-\[
-  F(x, y) = 0
-\]
-なので, $F(x, y)$に対し, 陰関数定理により, $F_y(x, y) \neq 0$ならば, $(x, y)$の十分近傍で, $y = y(x)$なる$C^1$級の$y(x)$が存在する. 
-または, $F_y(x, y) = 0$であっても, $F_x(x, y) \neq 0$ならば, $x = x(y)$なる$C^1$級の$x(y)$が存在する. 
-どちらのケースでも, 議論は対称なので, 今は, $F_y(x, y) \neq 0$のケースで議論をすすめる. 
-
-$F$の変化は, $x$の変化として表現でき, Theorem1.07を利用すると, 
-\begin{equation}\label{eq-1}
-  \frac{dF(x, y(x))}{dx} = \frac{\partial F}{\partial x}\frac{dx}{dx} + \frac{\partial F}{\partial y}\frac{dy}{dx}
-  = \frac{\partial F}{\partial x} + \frac{\partial F}{\partial y}\frac{dy}{dx} = 0
-\end{equation}
-$\grad$の定義, および, 陰関数定理の前提条件として, $F_y(x, y) \neq 0$より, 式(\ref{eq-1})は, 
+\subsubsection*{勾配がゼロベクトルとなる場合}
+この場合は, そもそもの直交の定義によるところであるが, ベクトルの直交とは, 内積がゼロであることだ, と定義するならば, 自明に成立している. これは, すなわち, ゼロベクトル, 点は, 全てのベクトルと直交する, というスタンスの定義である. こう言い切る参考資料もある. 
+一方で, ベクトルの直交とは, ベクトル同士のなす角が90度であることだ, という定義をするならば, 勾配がゼロな領域では, 接線が一意に定義できないため, 同じ面内の全てのベクトルは, 接線と直交する, という言い方になる. 
+すなわち, 勾配が0になる点付近での展開, 
 \begin{equation}
-  (\grad F) 
-  \cdot
-  \begin{pmatrix}
-    1 \\
-    \frac{dy}{dx} \\
-  \end{pmatrix}
-  =
-  (\grad f) 
-  \cdot
-  \begin{pmatrix}
-    1 \\
-    \frac{dy}{dx} \\
-  \end{pmatrix}
-  = 0
+  f(x + \Delta x, y + \Delta y) - f(x, y) = \frac{\partial f}{\partial x}\Delta x + \frac{\partial f}{\partial y}\Delta y + o(x) + o(y)
 \end{equation}
-ベクトル$(1, dy/dx)$は, $f(x, y) = z_0$を満たす, $y = y(x)$の, $x$における接線に沿って, $x$軸方向に$1$進むベクトルであり,
-それとの内積が$0$なので, 等高線と勾配は直交する. 
+は, $\Delta x$, $\Delta y$がどのような形で近づこうとも, 必ずゼロに収束する. つまり, $(x, y)$平面内のどの方向にも接線がある, ということになる. 
+これは, 凸関数の極点などと考えるとわかりやすいが, $f(x, y) = x^3$といった, 一見, 等高線が一つしか無いように思える関数についても, 実は, $x = 0$付近では, いかなる方向へ向いていても接線となっていることがわかる. 
+よって, この定義であっても, 勾配がゼロベクトルの場合は, 等高線と直交する. 
+\subsubsection*{勾配がゼロベクトルではない場合}
+lemmaにより, $f(x, y) = f(x(t), y(t)$と媒介変数表示でき, 媒介変数の関数は, $C^1$級なので, 
+\begin{equation}
+  \frac{df}{dt} = \frac{\partial f}{\partial x}\frac{dx}{dt} + \frac{\partial f}{\partial y}\frac{dy}{dt} = 0
+\end{equation}
+なので, $\grad f$と, 媒介変数表示された曲線の接線方向ベクトルが直交すると言える. 
 
+ある点からの近傍への展開, 
+\begin{equation}
+  f(x + \Delta x, y + \Delta y) - f(x, y) = \frac{\partial f}{\partial x}\Delta x + \frac{\partial f}{\partial y}\Delta y + o(x) + o(y)
+  = (\grad f)\cdot (\Delta x, \Delta y)
+\end{equation}
+は, ある点からの移動方向と, 勾配の内積で表され, この値が最大の値を持つときは, 移動方向と, 勾配の方向が同じときである. すなわち, 勾配の方向が, $z$軸方向への最大変化をもたらす方向であり, 傾斜がもっともきつい方向である. 
+また, 内積を, 図形的な表現をすると, 
+\[
+  | \grad f ||(\Delta x, \Delta y)|\cos\theta
+\]
+であり, もっともきつい方向への傾斜をとり, $(\Delta x, \Delta y)$の大きさを$1$に取れば, $|\grad f|$が, 単位移動量あたりの, 高さ($z$)方向の変位量, すなわち, 傾斜の大きさであることがわかる. 
 
 
 \end{document}
