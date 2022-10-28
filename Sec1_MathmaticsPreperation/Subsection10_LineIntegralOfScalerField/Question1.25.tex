@@ -1,0 +1,44 @@
+\documentclass{jsarticle} \usepackage[dvipdfmx]{graphicx} \usepackage[dvipdfmx]{hyperref}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+%\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+\newcommand*{\divg}{{\rm div}}
+\newcommand*{\rot}{{\rm rot}}
+\newcommand*{\trace}[1]{{\rm tr}\!{#1}}
+
+
+\title{Question1.25}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  $f(x, y) = x^2 y$を, 以下の経路$C_1$, $C_2$に沿って線積分する. 
+  \begin{enumerate}
+    \item $C_1:(t, 2-t)~~(0\leq t \leq 2)$
+    \item $C_2:(2\sin\theta, 2\cos\theta)~~(0\leq \theta \leq \frac{\pi}{2})$
+  \end{enumerate}
+
+\end{abstract}
+
+\section*{実行}
+シンプルに実行するが, 念のため, $C_1$, $C_2$の媒介変数が全単射か確認する. 
+$C_1$について, $x = t$なので, 全単射は自明. $y = 2 - t$も,オフセットされた直線なので自明.
+よって, 連続全単射なので, 積分区間を区切る必要はない.
+\begin{eqnarray}
+  && \int_{C_1}f(x, y)ds \nonumber \\
+  && = \int_0^2 t^2(2-t)\sqrt{1 + 1}dt \nonumber \\
+  && = \sqrt{2} \left[\frac{2}{3}t^3 - \frac{t^4}{4} \right]^2_0 \nonumber \\
+  && = \frac{4}{3}\sqrt{2}
+\end{eqnarray}
+\end{document}
