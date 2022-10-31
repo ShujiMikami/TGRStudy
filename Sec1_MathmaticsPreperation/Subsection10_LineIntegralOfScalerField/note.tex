@@ -1,0 +1,52 @@
+\documentclass{jsarticle} \usepackage[dvipdfmx]{graphicx} \usepackage[dvipdfmx]{hyperref}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+%\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+\newcommand*{\divg}{{\rm div}}
+\newcommand*{\rot}{{\rm rot}}
+\newcommand*{\trace}[1]{{\rm tr}\!{#1}}
+
+
+\title{note}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  スカラー場$f(x, y)$に対し, ある点$A$, $B$を結ぶ, 曲線$C$上の$(x, y)$に対し, 線積分を定義する. 
+  \begin{equation}
+    \int_C f(x, y)ds = \int_A^B f(x, y)ds \equiv \lim_{\substack{n \to \infty \\ s_i \to 0}}\sum_{i = 1}^n f(x_i, y_i)s_i
+  \end{equation}
+\end{abstract}
+
+\section*{媒介変数の任意性について}
+弧長パラメータ$s$により, $x$, $y$が表現されておらず, 弧長とは関係ない媒介変数表示がされているとき, その媒介変数表示の方法には積分値が依存しないことになっているが, 実はそうではない. 
+例えば, 
+\begin{eqnarray*}
+  x = t(t-1)(t+1) \nonumber \\
+  y = t(t-1)(t+1)
+\end{eqnarray*}
+のようにパラメータ表示されていたとする. 
+この軌跡は, $y = x$の直線であるが, このとき, 線積分を行う線の端点$A$を, $(x, y) = (-6, -6)$とし, もう一方の端点$B$を, $(x, y) = (6, 6)$とした場合, $t$の範囲は, $[-2, 2]$となる. 
+このとき, $x$, $y$は, $-6$から徐々に大きくなり, $t = -1/\sqrt{3}$で一旦極大を迎えた後, $t = 1/\sqrt{3}$まで単調に減少し, そこから単調に増加し, $6$まで到達する. 
+つまり, $t$を単調に増加させたときの, $x$, $y$が描く軌跡は, $y = x$の直線上を, $A$が存在する第三象限から第一象限に向かって進み, あるところで止まり, 同じルートを一旦戻り, 止まり, また同じルートを通って最終的に第一象限にある$B$にたどり着く, というものになる. 
+このことを十分に考慮せず, 単純に, 
+\begin{equation}
+  \int_C f(x, y)ds = \int_{-2}^2 f(x(t), y(t))\sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2}dt
+\end{equation}
+を計算してしまうと, 線素が本当は符号を持つことで, 往復分はキャンセルされることに気付かず, その絶対値で計算してしまう. つまり, 同じところを何回も重複して足してしまう. 
+
+これは, 言い換えれば, $ds/dt$が領域内で符号が変化する場合, さらに言い換えれば, $t = t(s)$が多価関数である場合, 場合に応じて, 細かく符号を意識した計算をしなければならない, ということである. 
+よって, 線積分を行う際, 変数が媒介変数表示されている場合は, 媒介変数の領域内で, 同じところを通ることが無いか, ある場合は, 積分区間を確実に区切ること, また, 媒介変数表示をしようとしている場合は, $t$から$s$への写像が, 全単射となるような選び方ができないか, 検討すべきである. 
+
+\end{document}
