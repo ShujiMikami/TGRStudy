@@ -1,0 +1,36 @@
+\documentclass{jsarticle} \usepackage[dvipdfmx]{graphicx} \usepackage[dvipdfmx]{hyperref}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+%\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+\newcommand*{\divg}{{\rm div}}
+\newcommand*{\rot}{{\rm rot}}
+\newcommand*{\trace}[1]{{\rm tr}\!{#1}}
+
+
+\title{note}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  ベクトル場$\mbold{F}(x, y)$に対し, ある点$A$, $B$を結ぶ, 曲線$C$上の$(x, y)$に対し, 線積分を定義する. 
+  \begin{equation}
+    \int_C \mbold{F}(x, y)\cdot d\mbold{r}
+    = \int_a^b \mbold{F}(x, y) \cdot \frac{d\mbold{r}}{ds}
+    = \int_a^b (F_x \frac{dx}{ds} + F_y \frac{dy}{ds})ds
+  \end{equation}
+\end{abstract}
+すなわち, 曲線$C$の$(x, y)$における, 長さ$ds$の接線ベクトルと$\mbold{F}$の内積を積分したもの. イメージとしては, 何らかの力場$\mbold{F}$があり, その中を, 場から力を受ける粒子を, $C$に沿って始点から終点まで動かすのに必要な仕事量, 力積だと理解できる. 
+\section*{媒介変数の任意性について}
+線積分ゆえというより, 置換積分自体の特性なので, ベクトル場の線積分も, 媒介変数表示が積分範囲で1価かどうかは注意が必要. 
+\end{document}
