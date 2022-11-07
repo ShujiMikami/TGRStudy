@@ -1,0 +1,53 @@
+\documentclass{jsarticle} \usepackage[dvipdfmx]{graphicx} \usepackage[dvipdfmx]{hyperref}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+%\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+\newcommand*{\divg}{{\rm div}}
+\newcommand*{\rot}{{\rm rot}}
+\newcommand*{\trace}[1]{{\rm tr}\!{#1}}
+
+
+\title{note}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  曲面$S$が, パラメータ$u$, $v$で, $\mbold{S}(u, v) = (S_x(u, v), S_y(u, v), S_z(u, v))$と表されているとき, 
+  $\frac{\partial \mbold{S}(a, b)}{\partial u}$を, $(a, b)$での, $u$方向の接ベクトルといい, 
+  $\frac{\partial \mbold{S}(a, b)}{\partial v}$を, $(a, b)$での, $v$方向の接ベクトルという. 
+  $S$上の, 領域$D$の面積は, 
+  \begin{equation}
+    \int_D \left| \frac{\partial \mbold{S}}{\partial u} \times \frac{\partial \mbold{S}}{\partial v} \right| du dv
+  \end{equation}
+  と計算できる. 
+
+  この定義により, スカラー場の面積分を, 
+  \begin{equation}
+    \int_D \left| \frac{\partial \mbold{S}}{\partial u} \times \frac{\partial \mbold{S}}{\partial v} \right| f(u,v)dudv
+  \end{equation}
+  と定義できる. 
+
+\end{abstract}
+
+$S$上のある点$\mbold{S}(u, v)$から, 
+$u$方向に $du$だけ動いたベクトルは, $\mbold{S}(u + \Delta u, v) - \mbold{S}(u, v) = \frac{\partial \mbold{S}(u, v)}{\partial u}du$, 
+$v$方向に $dv$だけ動いたベクトルは, $\mbold{S}(u, v + \Delta v) - \mbold{S}(u, v) = \frac{\partial \mbold{S}(u, v)}{\partial v}dv$, 
+であり, これらのベクトルは, ある平行四辺形を張る. 
+この平行四辺形の面積が, これらの外積である. 
+
+関数の面積分は, $f(u, v)$が, この面上で, $S$に対する, 法線方向の高さを表していると考えた時に, 曲面の領域を底面とした, 柱の一般化したものの体積を表しているといえる. 
+この計算式も, 絶対値が入っているため, スカラー場の線積分と同様, 同じところを通らないように, $u = u(x, y, z)$, $v = v(x, y, z)$が, 1価であるか, 多価の場合は, 積分区間が分離されている必要がある. 
+
+
+\end{document}
