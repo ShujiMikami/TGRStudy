@@ -1,0 +1,39 @@
+\documentclass{jsarticle} \usepackage[dvipdfmx]{graphicx} \usepackage[dvipdfmx]{hyperref}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+%\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+\newcommand*{\divg}{{\rm div}}
+\newcommand*{\rot}{{\rm rot}}
+\newcommand*{\trace}[1]{{\rm tr}\!{#1}}
+
+
+\title{Theorem1.28}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  ベクトル場$\mbold{F}(\mbold{x})$に対し, $\mbold{F} = \grad{g(\mbold{x})}$が成立する, スカラー場$g(\mbold{x})$が存在するとき, 
+  2定点$A$, $B$, を結ぶ曲線$C$に沿った線積分は, $C$の取り方によらず, 一定値になる.  
+\end{abstract}
+
+\section*{証明}
+$C$が$t$でパラメータ表示されているとすると, 
+\begin{eqnarray}
+  && \int_C \mbold{F}(\mbold{x}) \cdot d\mbold{s} = \int_a^b \mbold{F}(\mbold{x}(t)) \cdot \left(\frac{d\mbold{x}}{dt}dt \right) \nonumber\\
+  && = \int_a^b (\nabla g(\mbold{x}(t)) \cdot \frac{d \mbold{x}}{dt}dt \nonumber\\
+  && = \int_a^b \sum_i \left( \frac{\partial g}{\partial x_i}\frac{d x_i}{dt} \right)dt \nonumber\\
+  && = \int_a^b \frac{d g}{dt} dt = g(b) - g(a)
+\end{eqnarray}
+となり, $\mbold{x}(t)$の関数形に依存しない結果となる. 
+\end{document}
