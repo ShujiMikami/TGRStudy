@@ -1,0 +1,39 @@
+\documentclass{jsarticle} \usepackage[dvipdfmx]{graphicx} \usepackage[dvipdfmx]{hyperref}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+%\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+\newcommand*{\divg}{{\rm div}}
+\newcommand*{\rot}{{\rm rot}}
+\newcommand*{\trace}[1]{{\rm tr}\!{#1}}
+
+
+\title{Question1.26}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  ベクトル場$\mbold{F}(x, y) = (x + 1, xy)$に対し, 曲線$C:(t^2, t)$ $(0\leq t \leq 2)$上を, 線積分する. 
+\end{abstract}
+
+\section*{実行}
+$x = t^2$, $y = t$は, $t$の定義域の中では, 全単射. よって単純に計算するだけ. 
+
+\begin{eqnarray}
+  && \int_C \mbold{F} d\mbold{s} = \int_0^2 ((t^2 + 1)\cdot 2t + t^3)dt \nonumber \\
+  && = \left[ \frac{3 t^4}{4} + t^2 \right]_0^2 = 16
+\end{eqnarray}
+
+教科書では, $x$, $y$の直接計算も試しているが, 省略. 
+
+\end{document}
