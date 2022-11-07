@@ -1,0 +1,57 @@
+\documentclass{jsarticle} \usepackage[dvipdfmx]{graphicx} \usepackage[dvipdfmx]{hyperref}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+%\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+\newcommand*{\divg}{{\rm div}}
+\newcommand*{\rot}{{\rm rot}}
+\newcommand*{\trace}[1]{{\rm tr}\!{#1}}
+
+
+\title{Question1.27}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  ベクトル場$\mbold{F}(x, y) = (x^2, x + y)$, $\mbold{G}(x, y) = (2xy, x^2)$に対し, 曲線$C_1:(2t, 4t)$ $(0\leq t \leq 1)$, $C_2:(t, t^2)$ $(0 \leq t \leq 2)$上を, 線積分する. 
+\end{abstract}
+
+\section*{実行}
+$C_1$が, 全単射は自明, $C_2$の, $x = t$, $y = t^2$は, $t$の定義域の中では, 全単射. よって単純に計算するだけ. 
+$C_1$と$C_2$は, $(0, 0)$から, $(2, 4)$までの曲線で, 始点と終点は同じであることに注意. 
+
+\subsection*{$C_1$上積分}
+\begin{eqnarray}
+  && \int_{C_1} \mbold{F} d\mbold{s} = \int_0^1 (4t^2\cdot 2 + 6t\cdot 4)dt \nonumber \\
+  && = \left[ \frac{8 t^3}{3} + 12 t^2 \right]_0^1 = \frac{44}{3}
+\end{eqnarray}
+
+\begin{eqnarray}
+  && \int_{C_1} \mbold{G} d\mbold{s} = \int_0^1 (16t^2\cdot 2 + 4t^2\cdot 4)dt \nonumber \\
+  && = 16 \left[ t^3 \right]_0^1 = 16
+\end{eqnarray}
+
+\subsection*{$C_2$上積分}
+\begin{eqnarray}
+  && \int_{C_2} \mbold{F} d\mbold{s} = \int_0^2 (t^2 + (t + t^2)\cdot 2t)dt \nonumber \\
+  && = \left[ \frac{3 t^4}{4} + \frac{2 t^3}{3} \right]_0^2 = \frac{64}{3}
+\end{eqnarray}
+
+\begin{eqnarray}
+  && \int_{C_2} \mbold{G} d\mbold{s} = \int_0^1 (2t^3 + t^2\cdot 2t)dt \nonumber \\
+  && = \left[ t^4 \right]_0^2 = 16
+\end{eqnarray}
+
+$\mbold{F}$は, 経路により結果が変わったが, $\mbold{G}$については, 経路を変えても変化が無かった. 
+
+\end{document}

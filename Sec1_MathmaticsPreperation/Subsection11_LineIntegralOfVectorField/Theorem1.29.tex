@@ -1,0 +1,33 @@
+\documentclass{jsarticle} \usepackage[dvipdfmx]{graphicx} \usepackage[dvipdfmx]{hyperref}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+%\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+\newcommand*{\divg}{{\rm div}}
+\newcommand*{\rot}{{\rm rot}}
+\newcommand*{\trace}[1]{{\rm tr}\!{#1}}
+
+
+\title{Theorem1.29}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  ベクトル場$\mbold{F}(\mbold{x})$に対し, $\rot\mbold{F} = \mbold{0}$が成立するとき, 
+  2定点$A$, $B$, を結ぶ曲線$C$に沿った$\mbold{F}$の線積分は, $C$の取り方によらず, 一定値になる.  
+\end{abstract}
+
+\section*{証明}
+Theorem1.23より, $\rot$がゼロになることと, スカラーポテンシャルの存在は, 必要十分であった. したがって, 
+$\mbold{F} = \nabla g$なる, スカラーポテンシャル$g$が存在するので, 本Theoremは, Theorem1.29と同値である. 
+\end{document}
