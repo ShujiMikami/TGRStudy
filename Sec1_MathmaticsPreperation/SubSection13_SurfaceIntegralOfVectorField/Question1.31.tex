@@ -1,0 +1,70 @@
+\documentclass{jsarticle} \usepackage[dvipdfmx]{graphicx} \usepackage[dvipdfmx]{hyperref}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+%\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+\newcommand*{\divg}{{\rm div}}
+\newcommand*{\rot}{{\rm rot}}
+\newcommand*{\trace}[1]{{\rm tr}\!{#1}}
+
+
+\title{Question1.31}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  ベクトル場$\mbold{F}(x, y, z) = (x + y, xz, y + z^2)$を, 
+  単位円周 $C : (\cos t, \sin t, 0)$, 単位円板 $S_1 : x^2 + y^2 \leq 1$, 半球面 $S_2 : x^2 + y^2 + z^2 = 1$, $z\geq 0$
+  で積分. 
+\end{abstract}
+
+\section*{計算}
+定義通りに計算する. 早い話が, 球の8分割. 
+\begin{eqnarray}
+  && \frac{\partial \mbold{S}}{\partial \theta} = 
+  \begin{pmatrix}
+    \cos\theta \cos\phi \\
+    \cos\theta \sin\phi \\
+    -\sin\theta\\
+  \end{pmatrix}
+  \nonumber \\
+  && \frac{\partial \mbold{S}}{\partial \phi} = 
+  \begin{pmatrix}
+    -\sin\theta \cos\phi \\
+    -\sin\theta \sin\phi \\
+    0 \\
+  \end{pmatrix}
+  \nonumber \\
+  && \frac{\partial \mbold{S}}{\partial \theta} \times \frac{\partial \mbold{S}}{\partial \phi} = 
+  \begin{pmatrix}
+    -\sin^2\theta \cos\phi \\
+    \sin^2\theta \sin\phi \\
+    \cos\theta \sin\theta \\
+  \end{pmatrix}
+\end{eqnarray}
+を使って, 積分を計算すると, 
+\begin{eqnarray}
+  \int_S \left| \frac{\partial \mbold{S}}{\partial \theta} \times \frac{\partial \mbold{S}}{\partial \phi} \right|d\theta d\phi = 
+  \int_0^{\frac{\pi}{2}}d\theta \int_0^{\frac{\pi}{2}}d\phi \sin\theta 
+  = \frac{\pi}{2}
+\end{eqnarray}
+と, 確かに, 球の表面積$4\pi$の8分の1になっている. 
+なお, $\sin\theta$は, 球の経線の半径になっており, 積分すべき, 微少な平行四辺形が, 高緯度になればなるほど, $\phi$軸方向に細長くなっていくことを示している. 
+同様に, $f$の面積分を計算すると, 
+\begin{eqnarray}
+  \int_S \left| \frac{\partial \mbold{S}}{\partial \theta} \times \frac{\partial \mbold{S}}{\partial \phi} \right| \cos\theta \sin\phi d\theta d\phi 
+  = \frac{1}{2}
+\end{eqnarray}
+多分計算結果には特に意味はないと思われる. 
+
+\end{document}
