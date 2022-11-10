@@ -1,0 +1,59 @@
+\documentclass{jsarticle} 
+\usepackage[dvipdfmx]{graphicx} 
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+%\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+\newcommand*{\divg}{{\rm div}}
+\newcommand*{\rot}{{\rm rot}}
+\newcommand*{\trace}[1]{{\rm tr}\!{#1}}
+
+
+\title{Theorem1.34}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  $\divg\mbold{A} = 0$のとき, 閉曲線$C$を境界に持つ曲面$S$上での$A$の面積分は, $S$の取り方に依存しない. 
+\end{abstract}
+
+\section{本証明}
+Gaussの定理により, $\divg\mbold{A}$を満たす空間内の任意の部分空間$V$と, それを包む閉曲面$S_0$に対し, 
+\begin{equation}
+  \int_V \divg \mbold{A} = \int_{S_0} \mbold{A}\cdot\mbold{n} dS = 0
+\end{equation}
+
+$S_0$上に, $C$があるとしても, 任意性は失われない. 
+$S_0$は, $C$により, 開曲面$S_1$と$S_2$に分割される. 
+よって, これらの面での積分和が$0$なので, 
+\begin{equation}
+  \int_{S_1} \mbold{A} \cdot \mbold{n} dS = -\int_{S_2} \mbold{A}\cdot \mbold{n} dS 
+\end{equation}
+
+$S_2$では, $V$の外側に法線ベクトルを取るようにしていたが, これを敢えて内側に取るようにする, すなわち, $\mbold{n}^\prime = -\mbold{n}$とすると, 
+\begin{equation}
+  \int_{S_2} \mbold{A} \cdot \mbold{n} dS = - \int_{S_2} \mbold{A} \cdot \mbold{n^\prime} dS 
+\end{equation}
+
+もう少し正確に言うと, $S_1$上のある点$P_1$における, 接面と, 全く平行な面を接面とする, 点$P_2$が, $S_2$には必ずある. 平均値の定理の拡張版である. その場合, 同じ座標系で, 機械的に法線ベクトルを求めた場合, 同じベクトルになるべきである. 
+それを, $V$の外を向くように反転させているわけである. 上記の, $V$の内向きに敢えてベクトルを取りなおす, という行為は, $S_2$が, $S_1$と組み合わさって, 閉曲面を作成し, 法線を全て外向きにする, という意図を排除した操作である. 
+従って, $S_2$を一つの曲面として見直しただけではあるが, 意味のある操作である. 
+
+そもそもの$V$, すなわち$S_0$の取り方の任意性ゆえ, $S_1$, $S_2$の取り方も任意である. 
+それら二つが, 等式で結ばれるということは, すなわち, 境界を同じくする任意の$S$に対し, 面積分は等しい. 
+
+この定理が意味するところは, 空間内で, なにも発生していない場において, あるリングを置いたとき, そのリングを入り口とする, 風船のような入れ物に, 穴を空けた時, 穴から抜けてくる空気の総量は, どれだけ巨大な風船を持ってこようが一定であり, リングから入った空気にしか依存しない, ということである. 当たり前っちゃ当たり前だが, こういった概念を計算可能な数学表現で表せることは重要. 
+
+
+\end{document}
