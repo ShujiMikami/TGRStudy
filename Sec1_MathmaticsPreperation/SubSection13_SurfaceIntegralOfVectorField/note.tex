@@ -1,0 +1,39 @@
+\documentclass{jsarticle} \usepackage[dvipdfmx]{graphicx} \usepackage[dvipdfmx]{hyperref}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+%\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+\newcommand*{\divg}{{\rm div}}
+\newcommand*{\rot}{{\rm rot}}
+\newcommand*{\trace}[1]{{\rm tr}\!{#1}}
+
+
+\title{note}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  曲面$S$が, パラメータ$u$, $v$で, $\mbold{S}(u, v) = (S_x(u, v), S_y(u, v), S_z(u, v))$と表されているとき, 
+  $S$上で定義されている, ベクトル場$\mbold{F}(u, v)$の, $S$での面積分は, 
+  \begin{eqnarray}
+    \int_S \mbold{F} \cdot \mbold{n}dS 
+    = \int_S \left| \frac{\partial \mbold{S}}{\partial u} \times \frac{\partial \mbold{S}}{\partial v} \right| du dv \nonumber \\
+    = \lim_{n \to \infty} \sum_{i = 1}^n \mbold{F}_i \cdot \mbold{n}_i |\Delta S_i|
+  \end{eqnarray}
+  と計算できる. 
+\end{abstract}
+
+被積分関数は, $(u, v)$における, $\mbold{F}$の$S$の,法線方向成分である. これを除いた成分は, $S$に対する接面方向への成分であり, 積分全体としては, $\mbold{F}$を, $S$の表面を起点にした, 位置ベクトルであるとすると, $F$が指す座標の集合と, $S$で挟まれた部分の体積を求めていることになる. ただし, $S$に対し, 表側に出っ張っている成分と, 裏側に出っ張っている成分は, 打ち消しあう. 
+
+
+\end{document}
