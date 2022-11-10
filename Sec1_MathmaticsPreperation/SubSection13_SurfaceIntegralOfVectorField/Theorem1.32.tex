@@ -157,4 +157,41 @@ $C$の線積分は, この微小量の和を, 分割数無限の極限を取っ�
   \oint_C \mbold{A}\cdot d\mbold{r} = \lim_{n \to \infty} \sum_{i = 1}^n \Delta S_i (\nabla \times \mbold{A}) \cdot \mbold{n}_i = \int_S \rot \mbold{A} \cdot \mbold{n} dS
 \end{equation}
 
+ちなみに, 元の曲線$C$を一つの辺として持つ, いわゆる端っこの微少領域については, 以下の議論により無視できる. 
+境界の構造は, 図のような, 直角三角形のなりそこないのようなものになる. 
+\begin{figure}[htbp]
+  \begin{center}
+    \includegraphics[width=10cm]{Figure/EdgeSmallArea.png}
+  \end{center}
+\end{figure}
+
+この時, $A$, $C$については単純で, 
+\begin{subequations}
+  \begin{eqnarray}
+    && \int_A \mbold{A}\cdot d\mbold{r} = \int_{x + \Delta x}^x A_x(t, y, z)dt \\
+    && \int_C \mbold{A}\cdot d\mbold{r} = \int_{y + \Delta y}^y A_y(x + \Delta x, t, z)dt
+  \end{eqnarray}
+\end{subequations}
+となる. $B$については, 陰関数定理が適用できるレベルまで十分細かく分割, すなわち, 弧長と, $x$, $y$が全単射となるように分割されているとすれば, 
+\begin{equation}
+  \int_B \mbold{A} \cdot d\mbold{r} = \int_x^{x + \Delta x} \left( A_x(t, y(t), z) + A_y(t, y(t), z)\frac{dy}{dt} \right)dt
+\end{equation}
+
+このとき, $A_x$, $A_y$を, $(x, y, z)$を中心にTaylor展開すると, 
+\begin{subequations}
+  \begin{eqnarray}
+    && A_x(t, y(t), z) = A_x(x, y, z) + \frac{\partial A_x}{\partial x}(t - x) + \frac{\partial A_x}{\partial y}\frac{dy}{dx}(t - x) \\
+    && A_y(t, y(t), z) = A_y(x, y, z) + \frac{\partial A_y}{\partial x}(t - x) + \frac{\partial A_y}{\partial y}\frac{dy}{dx}(t - x) 
+  \end{eqnarray}
+\end{subequations}
+なので, 微少量の2次以降を無視すると, 結局積分した結果は, 
+\begin{subequations}
+  \begin{eqnarray}
+    && \int_A \mbold{A}\cdot d\mbold{r} = -A_x(x, y, z)\Delta x \\
+    && \int_B \mbold{A}\cdot d\mbold{r} = A_x(x, y, z)\Delta x + A_y(x, y, z)\frac{dy}{dx}\Delta x
+    = A_x(x, y, z)\Delta x + A_y(x, y, z)\Delta y\\
+    && \int_C \mbold{A}\cdot d\mbold{r} = -A_y(x, y, z)\Delta y 
+  \end{eqnarray}
+\end{subequations}
+により, 無くなってしまうため, 考慮する必要がない. 
 \end{document}
