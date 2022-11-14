@@ -1,0 +1,103 @@
+\documentclass{jsarticle} 
+\usepackage[dvipdfmx]{graphicx} 
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{amssymb}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+%\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+\newcommand*{\divg}{{\rm div}}
+\newcommand*{\rot}{{\rm rot}}
+\newcommand*{\trace}[1]{{\rm tr}\!{#1}}
+
+
+\title{Formula1.36}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  $\mbold{x}, \mbold{a} \in \mathbb{R}^3$, $\mbold{a} = const$. $\mbold{x} \neq \mbold{a}$.
+  閉曲面$S$とそれにより囲まれた閉領域$D$.
+  \begin{equation*}
+    \mbold{F}(\mbold{x}) = \frac{\mbold{x} - \mbold{a}}{|\mbold{x} - \mbold{a}|^3}
+  \end{equation*}
+  に対し, 
+  
+  \begin{equation}
+    \int_S \mbold{F}\cdot\mbold{n}dS = 
+    \begin{cases}
+      4\pi & \mbold{a} \in D \\
+      0    & \mbold{a} \notin D 
+    \end{cases}
+  \end{equation}
+
+
+\end{abstract}
+
+\section*{計算}
+\subsection{$\mbold{a} \notin D$のとき}
+$\mbold{a} \notin D$のときは簡単である. 
+Gaussの発散定理, Theorem1.33が使える. つまり, 
+\begin{equation}
+  \int_S \mbold{F}\cdot\mbold{n}dS = \int_D \divg \mbold{F} dV = 0
+\end{equation}
+
+$\mbold{a} \in D$の場合は, 教科書では, 簡単に$4\pi$としているが, 
+実は, $2\pi$の場合がある. 
+以下の2パターンで考える. 
+
+\subsection{$\mbold{a} \in D, \notin S$のとき}
+$\mbold{a}$が, $D$の境界である, $S$上ではなく, 完全に, $S$の内側にある時である. 
+教科書では, $S$を勝手に球に置き換えているが, これは, 結果として正しいが, 論理としては飛躍がある. 
+まず, $S$は, 勝手に決めていいものではなく, 決められたものであるため, 任意の$S$で成立する論理を立てねばならない. 
+
+Theorem1.33のlemma2を利用する. $D$に対し, 完全に$D$に内包されるように, 十分に小さな半径$r$の, $\mbold{a}$を中心とした球$D^\prime$を考え, 
+$D^\prime$の表面を$S^\prime$とする. 
+Theorem1.33のlemma2により, $S$での面積分は, $D^\prime$の表面での面積分と, $D$から, $D^\prime$をくりぬいて残った領域の面積分の和で表される. 
+一方で, 後者は, 特性として$\mbold{a} \notin D$の時と全く同一ケースなので, $0$になる. 
+前者は, 
+\begin{equation}
+  \int_{S^\prime} \mbold{F}\cdot \mbold{n}dS
+  = \int_{S^\prime} \frac{\mbold{x} - \mbold{a}}{|\mbold{x} - \mbold{a}|^3} \cdot \frac{\mbold{x} - \mbold{a}}{|\mbold{x} - \mbold{a}|}dS 
+  = \frac{1}{r^2}\int_{S^\prime} dS = \frac{4\pi r^2}{r^2} = 4\pi
+\end{equation}
+
+よって, $\mbold{a} \in D$かつ, $\mbold{a} \notin S$のときは, 積分値は$4\pi$.
+
+\subsection{$\mbold{a} \in S$のとき}
+このときは, 完全内包時と同様のロジックであるが, $D^\prime$を, $\mbold{a}$を中心とした, 半球にする. 
+くりぬかれた側の積分が$0$になるのは全く同様. 
+残った半球の積分について, 
+半球の, 切り口である, $\mbold{a}$を中心とする円$S^\prime_1$での積分は, 
+直交変換により, 原点が$\mbold{a}$, 円が$xy$平面上, 半球の内側に$z$座標が来るように座標を取れば, 
+$z = 0$であることを考慮すると, 
+\begin{equation}
+  \int_{S^\prime} \mbold{F}\cdot \mbold{n}dS
+  = \int_{S^\prime_1} \frac{\mbold{x} - \mbold{a}}{|\mbold{x} - \mbold{a}|^3} \cdot (0, 0, 1)dS 
+  = \int_{S^\prime_1} \frac{z}{\sqrt{x^2 + y^2}^3} = 0
+\end{equation}
+
+半球面$S^\prime_2$での計算は, $\mbold{a} \notin S$の時の計算結果を利用すれば, その半分の$2\pi$である. 
+
+以上により, 
+\begin{equation}
+  \int_S \mbold{F}\cdot\mbold{n}dS = 
+  \begin{cases}
+    4\pi & \mbold{a} \in D, \notin S \\
+    2\pi & \mbold{a} \in D, \in S \\
+    0    & \mbold{a} \notin D 
+  \end{cases}
+\end{equation}
+である. 
+
+\end{document}
