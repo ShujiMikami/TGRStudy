@@ -1,0 +1,73 @@
+\documentclass{jsarticle} 
+\usepackage[dvipdfmx]{graphicx} 
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{amssymb}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+%\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+\newcommand*{\divg}{{\rm div}}
+\newcommand*{\rot}{{\rm rot}}
+\newcommand*{\trace}[1]{{\rm tr}\!{#1}}
+
+
+\title{Formula1.35}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  $\mbold{x}, \mbold{a} \in \mathbb{R}^3$, $\mbold{a} = const$. $\mbold{x} \neq \mbold{a}$.
+  \begin{subequations}
+    \begin{eqnarray}
+      && \mbold{A}(\mbold{x}) = \frac{\mbold{x} - \mbold{a}}{|\mbold{x} - \mbold{a}|^3}, \divg\mbold{A}(\mbold{x}) = 0, \rot\mbold{A}(\mbold{x}) = \mbold{0} \\
+      && f(\mbold{x}) = \frac{1}{|\mbold{x} - \mbold{a}|}, \grad f(\mbold{x}) = -\mbold{A}(\mbold{x}), \varDelta \mbold{A}(\mbold{x}) = 0
+    \end{eqnarray}
+  \end{subequations}
+
+
+\end{abstract}
+
+\section*{計算}
+成分で計算する. すなわち, 
+\begin{equation}
+  A_i = (x_i - a_i) \left( \sum_{j} (x_j - a_j)^2 \right)^{-\frac{3}{2}}
+\end{equation}
+
+\begin{eqnarray}
+  \divg\mbold{A} && = \sum_i \frac{\partial A_i}{\partial x_i}
+  = \sum_i \left[ \left( \sum_{j} (x_j - a_j)^2 \right)^{-\frac{3}{2}} + (x_i - a_i) \left(-\frac{3}{2}\right)\left( \sum_{j} (x_j - a_j)^2 \right)^{-\frac{5}{2}}\cdot 2(x_i - a_i) \right] \nonumber \\
+  && = 3 \left( \sum_{j} (x_j - a_j)^2 \right)^{-\frac{3}{2}} - 3\sum_i(x_i - a_i)^2\left( \sum_{j} (x_j - a_j)^2 \right)^{-\frac{5}{2}}
+  = 0
+\end{eqnarray}
+
+\begin{eqnarray}\label{eq-4}
+  (\rot\mbold{A})_i && = \sum_{j, k}\epsilon_{ijk}\frac{\partial A_k}{\partial x_j}
+  = \sum_{j, k}\epsilon_{ijk}\left[ \delta_{jk} \left( \sum_l(x_l - a_l)^2 \right)^{-\frac{3}{2}} -\frac{3}{2}(x_k - a_k)(x_j - a_j)\left( \sum_l(x_l - a_l)^2 \right)^{-\frac{5}{2}} \right] \nonumber \\
+  && = 0
+\end{eqnarray}
+
+式(\ref{eq-4})の最後では, エディントンのエプシロンの性質である, 対称テンソルとの積をとった場合$0$になる, という事実を利用している. 
+
+\begin{eqnarray}
+  (\grad f)_i 
+  && = \frac{\partial}{\partial x_i}\left( \sum_j (x_j - a_j)^2 \right)^{-\frac{1}{2}} \nonumber \\
+  && = -\frac{1}{2} \left( \sum_j (x_j - a_j)^2 \right)^{-\frac{3}{2}} \cdot 2(x_i - a_i)
+  = -(x_i - a_i)\left( \sum_j (x_j - a_j)^2 \right)^{-\frac{3}{2}} \nonumber \\
+  && = -A_i
+\end{eqnarray}
+
+\begin{equation}
+  \varDelta f = \divg \grad f = -\divg \mbold{A} = 0
+\end{equation}
+
+\end{document}
