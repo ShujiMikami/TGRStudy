@@ -1,0 +1,97 @@
+\documentclass{jsarticle} \usepackage[dvipdfmx]{graphicx} \usepackage[dvipdfmx]{hyperref}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+%\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+\newcommand*{\divg}{{\rm div}}
+\newcommand*{\rot}{{\rm rot}}
+\newcommand*{\trace}[1]{{\rm tr}\!{#1}}
+
+
+\title{note}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  波動方程式
+  
+  \begin{equation}
+    \left( \frac{\partial^2}{\partial t^2} - \frac{1}{c}\frac{\partial^2}{\partial x^2} \right) \phi(x, t) = 0
+  \end{equation}
+  の解 $\phi(x, t)$は, 
+  \begin{equation}
+    \phi(x, t) = f(x + ct) + g(x - ct)
+  \end{equation}
+\end{abstract}
+
+\section{証明}
+教科書通りにやればよい. 
+
+$X = x + ct$, $Y = x - ct$としたとき, 
+
+\begin{equation}
+  \frac{\partial \phi}{\partial x}
+    = \frac{\partial \phi}{\partial X}\frac{\partial X}{\partial x}
+    + \frac{\partial \phi}{\partial Y}\frac{\partial Y}{\partial x}
+    = \frac{\partial \phi}{\partial X} + \frac{\partial \phi}{\partial Y}
+\end{equation}
+
+\begin{equation}
+  \frac{\partial \phi}{\partial t}
+    = \frac{\partial \phi}{\partial X}\frac{\partial X}{\partial t}
+    + \frac{\partial \phi}{\partial Y}\frac{\partial Y}{\partial t}
+    = c \left( \frac{\partial \phi}{\partial X} - \frac{\partial \phi}{\partial Y} \right)
+\end{equation}
+なので, もう一度微分すると, 
+
+\begin{equation}
+  \frac{\partial^2 \phi}{\partial x^2} = \frac{\partial^2 \phi}{\partial x \partial X} + \frac{\partial^2 \phi}{\partial x \partial Y}
+  = \frac{\partial^2 \phi}{\partial X^2} + \frac{\partial^2 \phi}{\partial Y^2} + 2\frac{\partial^2 \phi}{\partial X \partial Y}
+\end{equation}
+
+\begin{equation}
+  \frac{\partial^2 \phi}{\partial t^2} = c \left( \frac{\partial^2 \phi}{\partial t \partial X} - \frac{\partial^2 \phi}{\partial t \partial Y} \right)
+  = c^2 \left( \frac{\partial^2 \phi}{\partial X^2} - \frac{\partial^2 \phi}{\partial X \partial Y} \right) - c^2 \left( \frac{\partial^2 \phi}{\partial X \partial Y} - \frac{\partial^2 \phi}{\partial Y^2} \right)
+\end{equation}
+
+これらを代入すると, 
+
+\begin{equation}
+  \frac{\partial^2 \phi}{\partial X \partial Y} = 0
+\end{equation}
+
+まずは, 両辺を$X$で不定積分する. 
+
+\begin{equation}
+  \int \frac{\partial^2 \phi}{\partial X \partial Y} dX = \frac{\partial \phi}{\partial Y} = g(Y)
+\end{equation}
+
+$X$の偏微分で$0$になる, という条件は, $Y$のみの関数である, ということのため. 
+
+これを, さらに$Y$で不定積分する. 
+
+\begin{equation}
+  \int \frac{\partial \phi}{\partial Y} dY = \phi = \int g(Y) dY + f(X)
+\end{equation}
+
+大一項を改めて, $Y$の関数$g(Y)$と呼べば, 
+
+\begin{equation}
+  \phi(X, Y) = g(Y) + f(X)
+\end{equation}
+
+であり, これは当初の式の形を満たす. 
+
+十分条件の証明は, 代入すれば容易. 
+
+\end{document}
