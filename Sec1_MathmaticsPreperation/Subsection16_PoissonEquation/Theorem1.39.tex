@@ -1,0 +1,53 @@
+\documentclass{jsarticle} \usepackage[dvipdfmx]{graphicx} \usepackage[dvipdfmx]{hyperref}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{amssymb}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+%\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+\newcommand*{\divg}{{\rm div}}
+\newcommand*{\rot}{{\rm rot}}
+\newcommand*{\trace}[1]{{\rm tr}\!{#1}}
+
+
+\title{note}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  領域$V \in \mathbb{R}^3$で定義され, その外で$0$になる関数$f(\mbold{x})$に対し, 
+  
+  \begin{equation}
+    \phi(\mbold{x}) = \frac{1}{4\pi} \oint_V \frac{f(\mbold{y})}{|\mbold{x} - \mbold{y}|}d\mbold{y}
+  \end{equation}
+  のは, 
+  \begin{equation}
+    \varDelta \phi(\mbold{x}) = -f(\mbold{x})
+  \end{equation}
+\end{abstract}
+
+を満たす. 
+
+\section{lemma1}
+Gaussの発散定理, 及び, Greenの定理は, 単純な閉領域から, 部分領域を除いた, いわゆる中空構造の空間に対しても成立する. 
+
+すなわち, 中空構造の空間を, 内部の面と, 外部の面を貫くような, 細い直方体で分割する. 
+この一つの直方体は, 単純な閉領域であり, Gaussの発散定理や, Greenの定理が成立することは自明である. 
+そして, 隣り合う直方体同士は, ある一つの面を共有しており, この面のそれぞれの直方体領域にとっての法線ベクトルは, 互いに反対を向いているので, 
+その面での面積分は互いに打ち消しあう. 
+よって, これを全直方体領域の和で考えると, 結局, 中空部には, 内向きにベクトルを取ったうえで, 外側の面の積分と, 中空部の面の積分を足した結果が, 中空な領域の体積積分と等しくなる. 
+体積積分が, 中空でない空間から, 中空の内部空間での積分を引いたものである, という考えても, 同様の結論にたどり着くことができる. 
+
+\section{証明}
+
+
+\end{document}
