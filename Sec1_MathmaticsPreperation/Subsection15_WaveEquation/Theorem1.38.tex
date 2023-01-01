@@ -1,0 +1,65 @@
+\documentclass{jsarticle} \usepackage[dvipdfmx]{graphicx} \usepackage[dvipdfmx]{hyperref}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+%\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+\newcommand*{\divg}{{\rm div}}
+\newcommand*{\rot}{{\rm rot}}
+\newcommand*{\trace}[1]{{\rm tr}\!{#1}}
+
+
+\title{Therorem1.38}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  波動方程式
+  
+  \begin{equation}
+    \left( \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2}- \frac{1}{c}\frac{\partial^2}{\partial t^2} \right) \phi(\mbold{x}, t) = 0
+  \end{equation}
+  は,  
+  \begin{equation}
+    \phi(\mbold{x}, t) = C\sin(\mbold{k}\cdot \mbold{x} - ct + \alpha)
+  \end{equation}
+  を解として持つ. ただし, $|\mbold{k}| = 1$, 
+\end{abstract}
+
+\section{証明}
+代入するだけ. 
+
+\begin{eqnarray}
+  \frac{\partial^2}{\partial x_i^2} \sin(\sum_j k_j x_j - ct + \alpha)
+  =
+  \frac{\partial}{\partial x_i} \sum_j k_j \delta_{ji} \cos(\sum_j k_j x_j - ct + \alpha)
+  \nonumber \\
+  =
+  \frac{\partial}{\partial x_i} k_i \cos(\sum_j k_j x_j - ct +\alpha)
+  =
+  -k_i^2 \sin(\sum_j k_j x_j - ct +\alpha)
+\end{eqnarray}
+
+$i$について和を取ると, $|\mbold{k}| = 1$により, $-\sin()$. 
+
+\begin{eqnarray}
+  \frac{\partial^2}{\partial t^2} \sin(\sum_j k_j x_j - ct + \alpha)
+  =
+  -c \frac{\partial}{\partial t} \cos(\sum_j k_j x_j - ct + \alpha)
+  \nonumber \\
+  =
+  -c^2 \sin(\sum_j k_j x_j - ct + \alpha)
+\end{eqnarray}
+
+以上により式が成立する. 
+
+\end{document}
