@@ -1,0 +1,92 @@
+\documentclass{jsarticle} \usepackage[dvipdfmx]{graphicx} \usepackage[dvipdfmx]{hyperref}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+%\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+\newcommand*{\divg}{{\rm div}}
+\newcommand*{\rot}{{\rm rot}}
+\newcommand*{\trace}[1]{{\rm tr}\!{#1}}
+
+
+\title{note}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  速度$c$で一様物質中を伝播する1次元の波動の量$\phi(x, t)$は, 以下の方程式に従う. 
+
+  \begin{equation}
+    \left( \frac{\partial^2}{\partial x^2} - \frac{1}{c}\frac{\partial^2}{\partial t^2} \right) \phi(x, t) = 0
+  \end{equation}
+
+\end{abstract}
+
+1次元の物質の内部を, 大量の小さなバネで接続された質量$m$の質点の集合であると見立て, 
+質点の変位を$\phi_i(t)$とし, 運動方程式を立てる. 
+
+\begin{equation}
+  m \frac{\partial^2 \phi_i}{\partial t^2} = -k(\phi_i - \phi_{i + 1}) - k(\phi_i - \phi_{i - 1})
+\end{equation}
+
+バネは, 同じものを直列に接続すると, バネ定数が$1/2$に見える. すなわち, 
+同一のバネを直列接続した場合, バネ一つあたりの縮み量が半減し, その結果, バネが発する弾性力も半分になる. 
+つまり, システム全体としては, 同じ押し込み量に対し, 力が半減しているので, バネ定数が半減しているように見える. 
+これを連続長にすると, バネ定数は, 長さに反比例する. 
+
+よって, 有限長の1次元の物質の弾性定数が, ある有限値を取るならば, ミクロに分割したバネの定数は, その分割数に比例して大きくなる. 
+すなわち, ある有限長$L$の物質を, $N$分割したモデルでは, 
+
+\begin{equation}
+  m \frac{\partial^2 \phi_i}{\partial t^2} = -kN(\phi_i - \phi_{i + 1}) - kN(\phi_i - \phi_{i - 1})
+\end{equation}
+
+また, 質点の質量も, 一次元物質の質量が有限の$M$であったなら, その$N$分割をしているので, 
+
+\begin{equation}
+  \frac{M}{N} \frac{\partial^2 \phi_i}{\partial t^2} = -kN(\phi_i - \phi_{i + 1}) - kN(\phi_i - \phi_{i - 1})
+\end{equation}
+
+$\Delta x = L/N$とすると, 
+
+\begin{equation}
+  \frac{M}{L} \Delta x \frac{\partial^2 \phi_i}{\partial t^2} = -\frac{1}{\Delta x} \left( kL(\phi_i - \phi_{i + 1}) - kL(\phi_i - \phi_{i - 1}) \right)
+\end{equation}
+
+密度, すなわち$\rho = M/L$を使うと, 
+
+\begin{equation}
+  \rho \frac{\partial^2 \phi_i}{\partial t^2} = -\frac{kL}{\Delta x^2} ( 2 \phi_i - \phi_{i + 1} - \phi_{i - 1}) )
+\end{equation}
+
+ここで, $\phi$を, $i$の代わりに, あるポジション$x$での変位$\phi(x, t)$とすると(ただし, この段階ではまだ$x$は離散的の認識), 
+
+\begin{equation}
+  \rho \frac{\partial^2 \phi(x, t)}{\partial t^2} = -\frac{kL}{\Delta x^2} ( 2 \phi(x, t) - \phi(x + \Delta x, t) - \phi(x - \Delta x, t) )
+\end{equation}
+
+$\phi$を, $x$について, 関数としては連続であるとみなせるほど, 隣同士の距離が十分小さいと考え, テイラー展開を2次まで利用すると, 
+
+\begin{eqnarray}
+  \rho \frac{\partial^2 \phi(x, t)}{\partial t^2}
+  = && -\frac{kL}{\Delta x^2} ( \nonumber \\
+    && 2 \phi(x, t) \nonumber \\ 
+    && - \phi(x, t) - \frac{\partial \phi}{\partial x}(x, t) \Delta x - \frac{1}{2!}\frac{\partial^2 \phi}{\partial x^2}(x, t)\Delta x^2 \nonumber\\
+    && - \phi(x, t) + \frac{\partial \phi}{\partial x}(x, t) \Delta x - \frac{1}{2!}\frac{\partial^2 \phi}{\partial x^2}(x, t)\Delta x^2 \nonumber\\
+        ) \nonumber \\
+    = kL\frac{\partial^2 \phi}{\partial x^2}(x, t) 
+\end{eqnarray}
+
+これは, 当初の形になっている. 
+
+
+\end{document}

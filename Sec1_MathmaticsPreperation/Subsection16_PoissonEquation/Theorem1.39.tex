@@ -1,0 +1,211 @@
+\documentclass{jsarticle} \usepackage[dvipdfmx]{graphicx} \usepackage[dvipdfmx]{hyperref}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{amssymb}
+\usepackage{arydshln}
+\usepackage{mathtools}
+
+\newcommand*{\mbold}[1]{\mbox{\boldmath $#1$}}
+
+%\renewcommand*{\labelenumi}{(\arabic{enumi})}
+
+\newcommand*{\transp}[1]{\prescript{t\!}{}{#1}}
+
+\newcommand*{\grad}{{\rm grad}}
+\newcommand*{\divg}{{\rm div}}
+\newcommand*{\rot}{{\rm rot}}
+\newcommand*{\trace}[1]{{\rm tr}\!{#1}}
+\newcommand*{\laplacian}{\varDelta}
+
+
+\title{Theorem1.39}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  領域$V \subset \mathbb{R}^3$で定義され, その外で$0$になる関数$f(\mbold{x})$に対し, 
+  
+  \begin{equation}
+    \phi(\mbold{x}) = \frac{1}{4\pi} \oint_V \frac{f(\mbold{y})}{|\mbold{x} - \mbold{y}|}d\mbold{y}
+  \end{equation}
+  のは, 
+  \begin{equation}
+    \varDelta \phi(\mbold{x}) = -f(\mbold{x})
+  \end{equation}
+\end{abstract}
+
+を満たす. 
+
+\section{lemma1}
+Gaussの発散定理, 及び, Greenの定理は, 単純な閉領域から, 部分領域を除いた, いわゆる中空構造の空間に対しても成立する. 
+
+中空構造の空間を, 内部の面と, 外部の面を貫くような, 細い直方体で分割する. 
+この一つの直方体は, 単純な閉領域であり, Gaussの発散定理や, Greenの定理が成立することは自明である. 
+そして, 隣り合う直方体同士は, ある一つの面を共有しており, この面のそれぞれの直方体領域にとっての法線ベクトルは, 互いに反対を向いているので, 
+その面での面積分は互いに打ち消しあう. 
+よって, これを全直方体領域の和で考えると, 結局, 中空部には, 内向きにベクトルを取ったうえで, 外側の面の積分と, 中空部の面の積分を足した結果が, 中空な領域の体積積分と等しくなる. 
+
+体積積分が, 中空でない空間から, 中空の内部空間での積分を引いたものである, という考えでは, もし, 中空領域の内部に, 対象となる関数が不連続だったり, 微分不可能な点を包含している場合, 議論が破綻するため, 同様の結論にたどり着くことができない場合がある. 
+
+\section{証明}
+$\mbold{x} - \mbold{y} = \mbold{z}$なる変数変換を行う. 
+
+\begin{equation}
+  \phi(\mbold{x})
+  =
+  \frac{1}{4 \pi} \oint_V \frac{f(\mbold{y})}{|\mbold{x} - \mbold{y}|}d\mbold{y}
+  = 
+  \frac{1}{4 \pi} \oint_{V_x} \frac{f(\mbold{\mbold{x} - \mbold{z}})}{|\mbold{z}|}d\mbold{z}
+\end{equation}
+
+積分領域が$\mbold{x}$により変化することに注意しなければならない. 
+この問題を解消しないことには, $\mbold{x}$に関するラプラシアンを, 短絡的に積分の中に入れることはできない. 
+
+ここで, $f$が, $V$の外で$0$である, という事実に注目する. 
+$\phi(\mbold{x})$の被積分関数は, $f$が$0$であれば, $0$になる形をしているので, 積分範囲は, $\mathbb{R}^3$に広げてかまわない. 
+すなわち, 
+\begin{equation}
+  \phi(\mbold{x})
+  = 
+  \frac{1}{4 \pi} \oint_{V_x} \frac{f(\mbold{\mbold{x} - \mbold{z}})}{|\mbold{z}|}d\mbold{z}
+  =
+  \frac{1}{4 \pi} \oint_{\mathbb{R}^3} \frac{f(\mbold{\mbold{x} - \mbold{z}})}{|\mbold{z}|}d\mbold{z}
+\end{equation}
+
+ここで, ようやく, ラプラシアンを積分の中に入れることができる. 
+\begin{equation}
+  \varDelta \phi(\mbold{x})
+  = 
+  \frac{1}{4 \pi} \oint_{\mathbb{R}^3} \frac{\varDelta_x f(\mbold{\mbold{x} - \mbold{z}})}{|\mbold{z}|}d\mbold{z} 
+\end{equation}
+
+計算を進めるため, 積分領域を, $\mbold{x}$を中心として内包する, すなわち, $\mbold{z} = \mbold{0}$を中心とした, 半径$\varepsilon$の球面$S_\varepsilon$で分割する. 
+すなわち, 
+\begin{equation}
+  \oint_{\mathbb{R}^3} \frac{\varDelta_x f(\mbold{\mbold{x} - \mbold{z}})}{|\mbold{z}|}d\mbold{z} 
+  =
+  \left[ \oint_{|\mbold{z}| \geq \varepsilon} + \oint_{|\mbold{z}| < \varepsilon} \right] \frac{\varDelta_x f(\mbold{x} - \mbold{z})}{|\mbold{z}|}d\mbold{z}
+\end{equation}
+
+この結果は, $S_\varepsilon$が$V_x$に内包されていれば, $\varepsilon$の取り方に依存しないことが重要である. 
+
+また, $f$は, $\mbold{x} - \mbold{z}$の関数であるため, $\mbold{x}$, $\mbold{z}$という2変数の関数と捉えると, $\mbold{x}$に対する微分と, $\mbold{z}$に関する微分は, 互いに符号が反転しただけの結果となる. 
+よって, 2階微分であるラプラシアンは, $\mbold{x}$でも, $\mbold{z}$でも同一の結果をもたらすことになる. 
+今後の計算では, ラプラシアンは特に断りがない限り, すべて$z$に関するものと扱う. 
+
+まず, $S_\varepsilon$の外部, すなわち積分第1項を先に計算する. 
+Greenの定理を適用することを考える. Greenの定理は, Gaussの発散定理の応用形であり, 
+
+\begin{equation}
+  \oint_V (\phi \varDelta \psi - \psi \varDelta \phi)dV = \oint_S (\phi \nabla \psi - \psi \nabla \phi) \cdot \mbold{n} dS
+\end{equation}
+
+ただし, $V$は, 閉曲面$S$に囲まれた領域であり, $V$において, $\phi$, $\psi$ともに$C^2$級で連続. 
+
+教科書では, 登場する関数は, 基本的には何回でも微分可能, すなわち$C^\infty$級であり, $1/|\mbold{z}|$も,
+$\mbold{z} \neq \mbold{0}$では何回でも微分可能であるため, 被積分関数は, Greenの定理が適用可能である. 
+ラプラシアンを$\mbold{z}$のものとすることにしたのは, これらのベクトル解析のテクニックが多分に活用できるからである. 
+
+しかし, 積分領域が, 閉曲面内部ではないので, まだ定理の適用ができない. 
+$f$が非自明な元の領域$V$を内包する, 十分大きな領域$V_e$を新たに定義する. 
+この$V_e$は, ある閉曲面$S_e$の内部の領域とする. 
+$f$は, $V$の外では必ず$0$であるから, $V$の外の領域は自由な形を設定しても結果が変わらない. 
+そこで, 積分領域を, 改めて, $V_e$内とすることで, ようやく, 定理の適用の準備が整った. 
+
+$\phi = 1/|\mbold{z}|$, $\psi = f$とすると, 
+
+\begin{eqnarray}
+  && \oint_{|\mbold{z}| \geq \varepsilon} \frac{\varDelta f(\mbold{x} - \mbold{z})}{|\mbold{z}|}d\mbold{z}
+  =
+  \oint_{V_e - V_\varepsilon}\frac{\varDelta f(\mbold{x} - \mbold{z})}{|\mbold{z}|}d\mbold{z} \nonumber \\
+  && =
+  \oint_{V_e - V_\varepsilon} f(\mbold{x} - \mbold{z})\left( \laplacian \frac{1}{|\mbold{z}|} \right) d\mbold{z}
+  +
+  \left[ \int_{S_e} + \int_{S_\varepsilon} \right] \left( \frac{\nabla f(\mbold{x} - \mbold{z})}{|\mbold{z}|} - f(\mbold{x} - \mbold{z})\left( \nabla \frac{1}{|\mbold{z}|} \right) \right) \cdot \mbold{n} dS
+\end{eqnarray}
+
+ただし, $V_\varepsilon$は, $S_\varepsilon$内部の領域. 
+積分領域$V_e - V_\varepsilon$は, 閉曲面が定義できない, 中空構造を持った領域だが, lemma1により, Greenの定理が適用可能になっている. 
+このとき, $S_\varepsilon$における法線ベクトルは, $S_\varepsilon$の内向きに取らねばならないことに注意. 
+
+右辺第一項は, 14節で計算した通り, $\mbold{z} \neq \mbold{0}$で恒等的に$0$になる. 
+右辺第二項のうち, $S_e$に関する面積分は, 領域での$f$が$0$であることから, $0$になり, 
+結局, $S_\varepsilon$に関する面積分のみが残る. 
+
+$1/|\mbold{z}|$が, 逆二乗系のスカラーポテンシャルであること, $S_\varepsilon$での$\mbold{n}$は, 半径方向の単位ベクトル$-\mbold{z}/\varepsilon$であることを考慮すると, 
+
+\begin{eqnarray}
+  \int_{S_\varepsilon} \left( \frac{\nabla f(\mbold{x} - \mbold{z})}{|\mbold{z}|} - f(\mbold{x} - \mbold{z})\left( \nabla \frac{1}{|\mbold{z}|} \right) \right) \cdot \mbold{n} dS \nonumber \\
+  =
+  - \int_{S_\varepsilon} \left( \frac{\nabla f(\mbold{x} - \mbold{z})}{|\mbold{z}|} + f(\mbold{x} - \mbold{z}) \frac{\mbold{z}}{|\mbold{z}|^3} \right) \cdot \frac{\mbold{z}}{\varepsilon} dS \nonumber \\
+  =
+  - \int_{S_\varepsilon} \left( \frac{\nabla f(\mbold{x} - \mbold{z})}{\varepsilon} + f(\mbold{x} - \mbold{z}) \frac{\mbold{z}}{\varepsilon^3} \right) \cdot \frac{\mbold{z}}{\varepsilon} dS \nonumber \\
+  =
+  - \int_{S_\varepsilon} \left( \frac{\nabla f(\mbold{x} - \mbold{z})}{\varepsilon} \cdot \frac{\mbold{z}}{\varepsilon} + \frac{f(\mbold{x} - \mbold{z})}{\varepsilon^2} \right) dS 
+\end{eqnarray}
+
+積分の第一項は, $\grad$の半径方向の成分の大きさを表すので, 
+\begin{equation}
+  \nabla f(\mbold{x} - \mbold{z}) \cdot \frac{\mbold{z}}{\varepsilon} dS
+  = 
+  \left| \frac{\partial f}{\partial r}(\varepsilon, \theta, \varphi) \right|dS
+\end{equation}
+を使うと, 
+
+\begin{eqnarray}\label{eq-11}
+  && - \int_{S_\varepsilon} \left( \frac{\nabla f(\mbold{x} - \mbold{z})}{\varepsilon} \cdot \frac{\mbold{z}}{\varepsilon} + \frac{f(\mbold{x} - \mbold{z})}{\varepsilon^2} \right) dS 
+  =
+  -4 \pi \varepsilon^2 \frac{1}{\varepsilon} \left< \left| \frac{\partial f}{\partial r}(\varepsilon, \theta, \varphi) \right| \right>_{\theta, \varphi}
+  -4 \pi \varepsilon^2 \frac{1}{\varepsilon^2} <f(\varepsilon, \theta, \phi)>_{\theta, \varphi}
+  \nonumber \\
+  && = -4 \pi \varepsilon \left< \left| \frac{\partial f}{\partial r}(\varepsilon, \theta, \varphi) \right| \right>_{\theta, \varphi}
+  -4 \pi <f(\varepsilon, \theta, \phi)>_{\theta, \varphi}
+\end{eqnarray}
+
+次に, $S_\varepsilon$の内部を計算する. 
+\begin{equation}
+  \oint_{|\mbold{z}| < \varepsilon} \frac{\varDelta f(\mbold{x} - \mbold{z})}{|\mbold{z}|}d\mbold{z}
+\end{equation}
+被積分関数は, $\mbold{z} = \mbold{0}$で定義されないため, 積分計算は, 広義積分になる. 
+球面座標系での積分と考えると, 
+\begin{equation}
+  \oint_{|\mbold{z}| < \varepsilon} \frac{\varDelta f(\mbold{x} - \mbold{z})}{|\mbold{z}|}d\mbold{z}
+  =
+  \lim_{\varepsilon^\prime \to 0}\int_{\varepsilon^\prime}^\varepsilon dr \oint_{S_r} \frac{\varDelta f(\mbold{x} - \mbold{z})}{|\mbold{z}|} r^2 \sin\theta d\theta d\varphi 
+\end{equation}
+ただし, $S_r$は, 半径$r$の球面. 
+計算を進めると, 
+\begin{eqnarray}\label{eq-14}
+  \lim_{\varepsilon^\prime \to 0}\int_{\varepsilon^\prime}^\varepsilon dr \oint_{S_r} \frac{\varDelta f(\mbold{x} - \mbold{z})}{|\mbold{z}|} r^2 \sin\theta d\theta d\varphi 
+  &=&
+  \lim_{\varepsilon^\prime \to 0}\int_{\varepsilon^\prime}^\varepsilon dr \oint_{S_r} \varDelta f(\mbold{x} - \mbold{z}) r^2 \sin\theta d\theta d\varphi 
+  \nonumber \\
+  &=&
+  \lim_{\varepsilon^\prime \to 0}\int_{\varepsilon^\prime}^\varepsilon \frac{1}{r} dr \oint_{S_r} \varDelta f(r, \theta, \varphi) dS_r
+  \nonumber \\
+  &=&
+  \lim_{\varepsilon^\prime \to 0}\int_{\varepsilon^\prime}^\varepsilon dr \frac{1}{r} 4\pi r^2 <\varDelta f(r, \theta, \varphi)>_{\theta, \varphi} 
+  \nonumber \\
+  &=&
+  \lim_{\varepsilon^\prime \to 0}4 \pi (\varepsilon - \varepsilon^\prime) <r \varDelta f(r, \theta, \varphi)>_{r, \theta, \varphi} 
+  \nonumber \\
+  &=&
+  4 \pi \varepsilon <r \varDelta f(r, \theta, \varphi)>_{r, \theta, \varphi} 
+\end{eqnarray}
+
+元の積分領域に$S_\varepsilon$が包含されるという条件さえ満たせば, いかなる$\varepsilon$に対しても結果が変わらないので, 結果は, $\varepsilon \rightarrow 0$の極限値とも一致する. 
+式(\ref{eq-11})の第一項の平均部は, $f$が無限回微分可能で, 平均すべき区間が, $S_\varepsilon$上の閉区間であるため, 上限値が存在し, 結果, $\varepsilon \rightarrow 0$の極限において$0$となる. 
+
+第二項は, 原点を中心とした無限小領域の平均であり, 原点での$f$の値に近づく. 
+従って, $-4\pi f(\mbold{x})$に近づく. 
+
+式(\ref{eq-14})は, $r < \varepsilon$であることから, 閉領域内の$r\varDelta f$も上限値をもち, 従って, $\varepsilon \rightarrow 0$の極限で$0$に近づく. 
+
+結果, 最初の式が成り立つ. 
+
+原理的には, $\varepsilon \rightarrow 0$の極限は必要ないはずで, 空間の内包条件さえ満たしていれば, 式が成立するはずであるが, 簡単な計算処理で実行するのは極めて困難だと思われ, これ以上の追求はしないでおく. 
+
+
+\end{document}
